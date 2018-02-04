@@ -2,14 +2,25 @@
     "name": "spajs",
     "displayName": "spajs",
     "description": "Code Snippets for SPAjs framework https://spa.js.org",
-    "version": "1.0.2",
+    "keywords": [
+        "SPAjs",
+        "SPA js",
+        "SPA.js",
+        "Single Page Application"
+    ],
+    "version": "1.0.5",
     "publisher": "spajs",
+    "icon": "images/spajsIcon.png",
     "engines": {
         "vscode": "^1.19.0"
     },
     "categories": [
         "Snippets"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/spajs/vscode-ext-spajs.git"
+    },
     "contributes": {
         "snippets": [
             {
