@@ -1,0 +1,9 @@
+{
+  ".html": {
+    "data-spa-component": {
+      "prefix": "spa$",
+      "body": "data-spa-component=\"${1:componentName}\"",
+      "description":"Render SPA Component here"
+    }
+  }
+}

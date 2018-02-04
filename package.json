@@ -1,0 +1,25 @@
+{
+    "name": "spajs",
+    "displayName": "spajs",
+    "description": "Code Snippets for SPAjs framework https://spa.js.org",
+    "version": "1.0.2",
+    "publisher": "spajs",
+    "engines": {
+        "vscode": "^1.19.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "javascript",
+                "path": "./snippets/spajs.json"
+            },
+            {
+                "language": "html",
+                "path": "./snippets/spahtm.json"
+            }
+        ]
+    }
+}

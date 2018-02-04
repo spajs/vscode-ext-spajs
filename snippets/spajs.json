@@ -1,0 +1,29 @@
+{
+  ".js": {
+    "spa-component": {
+      "prefix": "spa$",
+      "body": "spa.\\$('${1:${TM_FILENAME_BASE}}', {\n\ttarget:'${2:#targetElementId}'\n});",
+      "description":"Define SPA Component"
+    },
+    "spa-component-extend": {
+      "prefix": "spa$extend",
+      "body": "spa.\\$extend('${1:${TM_FILENAME_BASE}}', {\n\trenderCallback: function(){\n\t\t//console.log(this.\\$data);\n\t\t//TODO: doSomething here.\n\t},\n\n\t${4:doSomething}: function(){\n\t\t//TODO: doSomething here.\n\t},\n\n\tevents: [\n\t\t{ target:'${2:#target element .selector}',\n\t\t\ton${3|Click,Dblclick,Mouseenter,Mouseleave,Keydown,Keyup,Keypress,Focus,Blur,Change,Submit|}: function( event ){\n\t\t\t\t//TODO: doSomething here.\n\t\t\t\tapp.${1:${TM_FILENAME_BASE}}.${4:doSomething}();\n\t\t\t}\n\t\t}\n\t]\n});",
+      "description":"Extend SPA Component"
+    },
+    "spa-component-render": {
+      "prefix": "spa$render",
+      "body": "spa.\\$render('${1:componentName}', {${2}});",
+      "description":"Render SPA Component"
+    },
+    "spa-component-reference": {
+      "prefix": "spa$..",
+      "body": "app.${1:componentName}.${2:property};",
+      "description":"SPA Component Reference"
+    },
+    "app-component-reference": {
+      "prefix": "app$..",
+      "body": "app.${1:componentName}.${2:property};",
+      "description":"SPA Component Reference"
+    }
+  }
+}
