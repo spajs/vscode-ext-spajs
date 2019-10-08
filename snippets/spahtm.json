@@ -1,9 +1,191 @@
 {
   ".html": {
-    "data-spa-component": {
+    "data-spa-$": {
       "prefix": "spa$",
+      "body": "<spa-component src=\"${1:componentName}\"></spa-component>",
+      "description":"SPA - Render Component here using tag"
+    },
+    "spa-component": {
+      "prefix": "spa-component",
+      "body": "<spa-component src=\"${1:componentName}\"></spa-component>",
+      "description":"SPA - Render Component here using tag"
+    },
+    "x-component": {
+      "prefix": "x-component",
+      "body": "<x-component src=\"${1:componentName}\"></x-component>",
+      "description":"SPA - Render Component here using tag"
+    },
+    "data-spa-component": {
+      "prefix": "data-spa-component",
       "body": "data-spa-component=\"${1:componentName}\"",
-      "description":"Render SPA Component here"
+      "description":"SPA - Render Component here using attribute"
+    },
+    "i18n-lang": {
+      "prefix": "i18n-lang",
+      "body": "i18n-lang=\"${1:en_US}\"",
+      "description":"SPA - i18n default language in <body> tag"
+    },
+    "data-i18n": {
+      "prefix": "data-i18n",
+      "body": "data-i18n=\"${1:i18n.key}\"",
+      "description":"SPA - i18n label for key"
+    },
+    "data-i18n-lang": {
+      "prefix": "data-i18n-lang",
+      "body": "data-i18n-lang=\"${1:en_US}\"",
+      "description":"SPA - i18n for language switch/change"
+    },
+
+    "hb-spa$": {
+      "prefix": ":$",
+      "body": "{$${1:componentName}}${2:method}();",
+      "description":"SPA - HB-helper {$componentName}method();"
+    },
+
+    "hb-consoleClear": {
+      "prefix": ":consoleClear",
+      "body": "{{:consoleClear }}",
+      "description":"SPA - HB-helper console.clear"
+    },
+    "hb-consoleLog": {
+      "prefix": ":consoleLog",
+      "body": "{{:consoleLog ${1:variable} }}",
+      "description":"SPA - HB-helper console.log"
+    },
+
+    "hb-trim": {
+      "prefix": ":trim",
+      "body": "{{:trim ${1:srcStringVariable} }}",
+      "description":"SPA - HB-helper trimStr"
+    },
+    "hb-trimStr": {
+      "prefix": ":trimStr",
+      "body": "{{:trimStr ${1:srcStringVariable} '${2:trimString}' }}",
+      "description":"SPA - HB-helper trimStr"
+    },
+    "hb-trimLeft": {
+      "prefix": ":trimLeft",
+      "body": "{{:trimLeft ${1:srcStringVariable} }}",
+      "description":"SPA - HB-helper trimLeft"
+    },
+    "hb-trimLeftStr": {
+      "prefix": ":trimLeftStr",
+      "body": "{{:trimLeftStr ${1:srcStringVariable} '${2:trimString}' }}",
+      "description":"SPA - HB-helper trimLeftStr"
+    },
+    "hb-trimRight": {
+      "prefix": ":trimRight",
+      "body": "{{:trimRight ${1:srcStringVariable} }}",
+      "description":"SPA - HB-helper trimRight"
+    },
+    "hb-trimRightStr": {
+      "prefix": ":trimRightStr",
+      "body": "{{:trimRightStr ${1:srcStringVariable} '${2:trimString}' }}",
+      "description":"SPA - HB-helper trimRightStr"
+    },
+
+    "hb-replaceString": {
+      "prefix": ":replaceString",
+      "body": "{{:replace ${1:srcStringVariable} searchStr='${2:searchForString}' replaceStr='${3:replaceWithString}' }}",
+      "description":"SPA - HB-helper replace"
+    },
+    "hb-replaceStringOnRegEx": {
+      "prefix": ":replaceStringOnRegEx",
+      "body": "{{:replace ${1:srcStringVariable} rxPattern='${2:searchForRegExPattern}' rxOption='${3|g,i,gi|}' replaceStr='${4:replaceWithString}' }}",
+      "description":"SPA - HB-helper replace string. Search by RegEx Pattern."
+    },
+
+    "hb-getLeftStrByIndex": {
+      "prefix": ":getLeftStrByIndex",
+      "body": "{{:getLeftStr ${1:srcStringVariable} ${2:fromIndexNumber} }}",
+      "description":"SPA - HB-helper getLeftStr"
+    },
+    "hb-getLeftStrByString": {
+      "prefix": ":getLeftStrByString",
+      "body": "{{:getLeftStr ${1:srcStringVariable} '${2:fromSplitString}' }}",
+      "description":"SPA - HB-helper getLeftStr"
+    },
+    "hb-getRightStrByIndex": {
+      "prefix": ":getRightStrByIndex",
+      "body": "{{:getRightStr ${1:srcStringVariable} ${2:fromIndexNumber} }}",
+      "description":"SPA - HB-helper getRightStr"
+    },
+    "hb-getRightStrByString": {
+      "prefix": ":getRightStrByString",
+      "body": "{{:getRightStr ${1:srcStringVariable} '${2:fromSplitString}' }}",
+      "description":"SPA - HB-helper getRightStr"
+    },
+
+    "hb-normalize": {
+      "prefix": ":normalizeStr",
+      "body": "{{:normalize ${1:srcStringVariable} }}",
+      "description":"SPA - HB-helper normalize"
+    },
+    "hb-toLowerCase": {
+      "prefix": ":toLowerCase",
+      "body": "{{:toLowerCase ${1:srcStringVariable} }}",
+      "description":"SPA - HB-helper toLowerCase"
+    },
+    "hb-toUpperCase": {
+      "prefix": ":toUpperCase",
+      "body": "{{:toUpperCase ${1:srcStringVariable} }}",
+      "description":"SPA - HB-helper toUpperCase"
+    },
+    "hb-toTitleCase": {
+      "prefix": ":toTitleCase",
+      "body": "{{:toTitleCase ${1:srcStringVariable} }}",
+      "description":"SPA - HB-helper toTitleCase"
+    },
+    "hb-toString": {
+      "prefix": ":toString",
+      "body": "{{:toStr ${1:srcObjectVariable} }}",
+      "description":"SPA - HB-helper toStr object"
+    },
+    "hb-toBoolean": {
+      "prefix": ":toBoolean",
+      "body": "{{:toBool ${1:srcStringVariable} }}",
+      "description":"SPA - HB-helper toBoolean X"
+    },
+    "hb-capitalize": {
+      "prefix": ":capitalize",
+      "body": "{{:capitalize ${1:srcStringVariable} }}",
+      "description":"SPA - HB-helper capitalize"
+    },
+    "hb-unCapitalize": {
+      "prefix": ":unCapitalize",
+      "body": "{{:unCapitalize ${1:srcStringVariable} }}",
+      "description":"SPA - HB-helper unCapitalize"
+    },
+    "hb-dateNowMs": {
+      "prefix": ":dateNowMs",
+      "body": "{{:dateNowMs }}",
+      "description":"SPA - HB-helper current time in milliseconds."
+    },
+    "hb-dateNowFormat": {
+      "prefix": ":dateNow",
+      "body": "{{:dateNow '${1:formatString}' }}",
+      "description":"SPA - HB-helper current date time in given format."
+    },
+    "hb-dateNowFormatHelp": {
+      "prefix": ":dateNowFormatHelp",
+      "body": "\n<!-- :dateNow FormatString Help\n*   'YY'   : Full Year (4 digits)\n*   'YYYY' : Full Year (4 digits)\n*   'Y'    : Full Year (4 digits)\n*\n*   'Mmmm' : January\n*   'MMMM' : JANUARY\n*   'Mmm'  : Jan\n*   'MMM'  : JAN\n*   '0M'   : 01 (01-12 month in 2 digits)\n*   'MM'   : 1  ( 1-12 month in 1 digit till 9)\n*\n*   'Dddd' : Sunday\n*   'DDDD' : SUNDAY\n*   'Ddd'  : Sun\n*   'DDD'  : SUN\n*   'Dd'   : Su\n*   'DD'   : SU\n*   '0d'   : 06 (01-31 date in 2 digits)\n*   'dd'   : 6  ( 1-31 date in 1 digit till 9)\n*\n*\n*   '0h'   : 09 (00-23 hour in 2 digits)\n*   'hh'   : 9  ( 0-23 hour in 1 digit till 9)\n*   '0m'   : 05 (00-59 minute in 2 digits)\n*   'mm'   : 5  ( 0-59 minute in 1 digit till 9)\n*   '0s'   : 01 (00-59 seconds in 2 digits)\n*   'ss'   : 1  ( 0-59 seconds in 1 digit till 9)\n*\n*   'ms'   : 456 (milliseconds 0 - 999)\n-->",
+      "description":"SPA - HB-helper format string for :dateNow."
+    },
+    "hb-moment": {
+      "prefix": ":moment",
+      "body": "{{:moment ${1:srcDateTimeStringVariable} '${2:srcFormatString}' '${3:targetFormatString}' }}",
+      "description":"SPA - HB-helper date-time format using moment.js\n** Requires moment.js **\n"
+    },
+    "hb-rand": {
+      "prefix": ":rand",
+      "body": "{{:rand ${1:minNumber} ${2:maxNumber} }}",
+      "description":"SPA - HB-helper random number between min and max.\n"
+    },
+    "hb-randPwd": {
+      "prefix": ":randPwd",
+      "body": "{{:randPwd ${1:passwordLength} '${2:passwordCharacters}' }}",
+      "description":"SPA - HB-helper random number between min and max.\n"
     }
+
   }
 }

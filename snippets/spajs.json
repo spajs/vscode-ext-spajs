@@ -24,6 +24,403 @@
       "prefix": "app$..",
       "body": "app.${1:componentName}.${2:property};",
       "description":"SPA Component Reference"
+    },
+    "spa-bindData": {
+      "prefix": "spa.bindData",
+      "body": "spa.bindData( '${1:#contextRoot}', ${2:dataObject}, '${3:.elementFilter}' );",
+      "description":"SPA - Data Bind instead of re-render. same as spa.dataBind"
+    },
+    "spa-defaults": {
+      "prefix": "spa.defaults",
+      "body": "spa.defaults.set( {\n\tcomponents: {\n\t\trootPath: '${1:app/components/}',\n\t\tinFolder: ${2:true},\n\t\ttemplateExt: '.${3:html}',\n\t\tscriptExt: '.${4:js}',\n\t\tcallback: '${5}'}\n\t} );",
+      "description":"SPA Default Settings"
+    },
+    "spa-dataBind": {
+      "prefix": "spa.dataBind",
+      "body": "spa.dataBind( '${1:#contextRoot}', ${2:dataObject}, '${3:.elementFilter}' );",
+      "description":"SPA - Data Bind instead of re-render. same as spa.bindData"
+    },
+    "spa-doDataValidation": {
+      "prefix": "spa.doDataValidation",
+      "body": "spa.doDataValidation( '#${1:formID}' );",
+      "description":"SPA - dataValidation - Silent"
+    },
+    "spa-doDataValidation-showErrorMsg": {
+      "prefix": "spa.doDataValidation",
+      "body": "spa.doDataValidation( '#${1:formID}', true );",
+      "description":"SPA - dataValidation - Show Error Msg"
+    },
+    "spa-findSafe": {
+      "prefix": "spa.findInObj",
+      "body": "spa.findSafe( ${1:objectName}, '${2:key.path}' );",
+      "description":"SPA - find in Object"
+    },
+    "spa-getElValue": {
+      "prefix": "spa.getElValue",
+      "body": "spa.getElValue( '#${1:elementID}' );",
+      "description":"SPA - get DOM Element value"
+    },
+    "spa-getElValue-EscHtml": {
+      "prefix": "spa.getElValue",
+      "body": "spa.getElValue( '#${1:elementID}', true );",
+      "description":"SPA - get DOM Element value and Escape HTML.\nReturns: string"
+    },
+    "spa-getLocHash": {
+      "prefix": "spa.getLocHash",
+      "body": "spa.getLocHash();",
+      "description":"SPA - get window.location.hash"
+    },
+    "spa-getModifiedElements": {
+      "prefix": "spa.getModifiedElements",
+      "body": "spa.getModifiedElements( '#${1:formID}' );",
+      "description":"SPA - get modified elements list.\nReturns: array"
+    },
+    "spa-hasKey": {
+      "prefix": "spa.hasKey",
+      "body": "spa.hasKey( ${1:Object}, '${2:key.full.path}' );",
+      "description":"SPA - find in object is path exists?.\nReturns: boolean."
+    },
+    "spa-hasKeyIgnoreCase": {
+      "prefix": "spa.hasKeyIgnoreCase",
+      "body": "spa.hasKeyIgnoreCase( ${1:Object}, '${2:key.full.path}' );",
+      "description":"SPA - find in object is path exists?.\nReturns: boolean."
+    },
+    "spa-hasKeys-all": {
+      "prefix": "spa.hasKeys",
+      "body": "spa.hasKeys( ${1:Object}, '${2:key.full.path.1},${3:key.full.path.2}' );",
+      "description":"SPA - find in object are ALL key-paths exist?.\nReturns: boolean."
+    },
+    "spa-hasKeys-any": {
+      "prefix": "spa.hasKeys",
+      "body": "spa.hasKeys( ${1:Object}, '${2:key.full.path.1}|${3:key.full.path.2}' );",
+      "description":"SPA - find in object is ANY ONE key-path exist?.\nReturns: boolean."
+    },
+    "spa-hasPrimaryKeys-all": {
+      "prefix": "spa.hasPrimaryKeys",
+      "body": "spa.hasPrimaryKeys( ${1:Object}, '${2:primaryKey1},${3:primaryKey2}' );",
+      "description":"SPA - find in object are ALL primary keys exist?.\nReturns: boolean."
+    },
+    "spa-hasPrimaryKeys-any": {
+      "prefix": "spa.hasPrimaryKeys",
+      "body": "spa.hasPrimaryKeys( ${1:Object}, '${2:primaryKey1}|${3:primaryKey2}' );",
+      "description":"SPA - find in object is ANY on primary key exists?.\nReturns: boolean."
+    },
+    "spa-i18n-text": {
+      "prefix": "spa.i18n.text",
+      "body": "spa.i18n.text( '${1:i18n.key}', ${2:optionalParamsObject} );",
+      "description":"SPA - i18n text for key.\nReturns: string."
+    },
+    "spa-i18n-apply": {
+      "prefix": "spa.i18n.apply",
+      "body": "spa.i18n.apply( '#${1:OptionalContext}', '${2:optionalElementSelector}' );",
+      "description":"SPA - apply i18n text on the element(s) in the context/scope."
+    },
+    "spa-is": {
+      "prefix": "spa.is",
+      "body": "spa.is( ${1:variable}, '${2|array,boolean,function,number,null,object,string,undefined|}|${3|array,boolean,function,number,null,object,string,undefined|}' );",
+      "description":"SPA - check variable type.\nReturns: boolean."
+    },
+    "spa-isBlank": {
+      "prefix": "spa.isBlank",
+      "body": "spa.isBlank( ${1:variable} );",
+      "description":"SPA - check is variable blank(string) or empty(array/object) or null or undefined?\nReturns: boolean."
+    },
+    "spa-isElementExist": {
+      "prefix": "spa.isElementExist",
+      "body": "spa.isElementExist( '${1:elementSelector}' );",
+      "description":"SPA - check is HTML element exists?\nReturns: boolean."
+    },
+    "spa-isElValueChanged": {
+      "prefix": "spa.isElValueChanged",
+      "body": "spa.isElValueChanged( '${1:elementSelector}' );",
+      "description":"SPA - check is HTML element value changed?\nReturns: boolean."
+    },
+    "spa-now": {
+      "prefix": "spa.now",
+      "body": "spa.now();",
+      "description":"SPA - Now: current time in milliseconds"
+    },
+    "spa-onUrlHashChange": {
+      "prefix": "spa.onUrlHashChange",
+      "body": "spa.onUrlHashChange = function( urlHash ){\n\t\t${1}\n\t};",
+      "description":"SPA - event onUrlHashChange."
+    },
+    "spa-pickOnSplit": {
+      "prefix": "spa.pickOnSplit",
+      "body": "spa.pickOnSplit( '${1:string}', '${2:splitBy}', ${3:pickIndex} );",
+      "description":"SPA - Pick on Split"
+    },
+    "spa-pickOnLastSplit": {
+      "prefix": "spa.pickOnLastSplit",
+      "body": "spa.pickOnSplit( ${1:pickIndex} );",
+      "description":"SPA - Pick on prevous split"
+    },
+    "spa-queryStringToObject": {
+      "prefix": "spa.queryStringToObject",
+      "body": "spa.queryStringToObject( '${1:optionalQryString}' );",
+      "description":"SPA - URL query string (name=value&...) to json object.\nReturns: object."
+    },
+    "spa-rand": {
+      "prefix": "spa.rand",
+      "body": "spa.rand( ${1:min}, ${2:max} );",
+      "description":"SPA - random number between min and max."
+    },
+    "spa-randomPassword": {
+      "prefix": "spa.randomPassword",
+      "body": "spa.randomPassword( ${1:length}, '${2:optionalString}' );",
+      "description":"SPA - random password."
+    },
+    "spa-range": {
+      "prefix": "spa.range",
+      "body": "spa.range( '${1:min}..${2:max}' );",
+      "description":"SPA - range from min to max by step 1."
+    },
+    "spa-range-byStep": {
+      "prefix": "spa.range",
+      "body": "spa.range( '${1:min}..${2:max}:${3:stepBy}' );",
+      "description":"SPA - range from min to max by stepBy."
+    },
+    "spa-range-year": {
+      "prefix": "spa.range",
+      "body": "spa.range( 'Y-${1:Number}..Y+${2:Number}' );",
+      "description":"SPA - year range from currentYear-N to currentYear+N."
+    },
+    "spa-resetElementsDefaultValue": {
+      "prefix": "spa.resetElementsDefaultValue",
+      "body": "spa.resetElementsDefaultValue( '${1:elementsSelector}' );",
+      "description":"SPA - reset element(s)' default value."
+    },
+    "spa-serializeFormToSimpleObject": {
+      "prefix": "spa.serializeFormToSimpleObject",
+      "body": "spa.serializeFormToSimpleObject( '#${1:formID}' );",
+      "description":"SPA - serialize form element values to simple object."
+    },
+    "spa-serializeFormToObject": {
+      "prefix": "spa.serializeFormToObject",
+      "body": "spa.serializeFormToObject( '#${1:formID}' );",
+      "description":"SPA - serialize form element values to object."
+    },
+    "spa-toQueryString": {
+      "prefix": "spa.toQueryString",
+      "body": "spa.toQueryString( ${1:Object} );",
+      "description":"SPA - JSON Object to URL Query String: name=value&..."
+    },
+    "spa-year": {
+      "prefix": "spa.year",
+      "body": "spa.year( ${1:+/-number} );",
+      "description":"SPA - year: with + or - count. Default current year."
+    },
+    "spa-urlHash": {
+      "prefix": "spa.urlHash",
+      "body": "spa.urlHash();",
+      "description":"SPA - urlHash:\nReturns: '/hash0/hash1/hash2'"
+    },
+    "spa-urlHashByIndex": {
+      "prefix": "spa.urlHash",
+      "body": "spa.urlHash( ${1:hashIndexNumber} );",
+      "description":"SPA - urlHash:\nReturns: string"
+    },
+    "spa-urlHashAsArray": {
+      "prefix": "spa.urlHash",
+      "body": "spa.urlHash( [] );",
+      "description":"SPA - urlHash:\nReturns: array"
+    },
+    "spa-urlHashAsObject": {
+      "prefix": "spa.urlHash",
+      "body": "spa.urlHash( ['${1:key0}', '${1:key1}'] );",
+      "description":"SPA - urlHash:\nReturns: object"
+    },
+
+    "str-beginsWithStr": {
+      "prefix": ".beginsWithStr",
+      "body": "${1:srcString}.beginsWithStr( '${2:string}' )",
+      "description":"SPA - String.beginsWithStr"
+    },
+    "str-beginsWithStrIgnoreCase": {
+      "prefix": ".beginsWithStrIgnoreCase",
+      "body": "${1:srcString}.beginsWithStrIgnoreCase( '${2:string}' )",
+      "description":"SPA - String.beginsWithStrIgnoreCase"
+    },
+    "str-endsWithStr": {
+      "prefix": ".endsWithStr",
+      "body": "${1:srcString}.endsWithStr( '${2:string}' )",
+      "description":"SPA - String.endsWithStr"
+    },
+    "str-endsWithStrIgnoreCase": {
+      "prefix": ".endsWithStrIgnoreCase",
+      "body": "${1:srcString}.endsWithStrIgnoreCase( '${2:string}' )",
+      "description":"SPA - String.endsWithStrIgnoreCase"
+    },
+    "str-containsStr": {
+      "prefix": ".containsStr",
+      "body": "${1:srcString}.containsStr( '${2:string}' )",
+      "description":"SPA - String.containsStr"
+    },
+    "str-containsStrIgnoreCase": {
+      "prefix": ".containsStrIgnoreCase",
+      "body": "${1:srcString}.containsStrIgnoreCase( '${2:string}' )",
+      "description":"SPA - String.containsStrIgnoreCase"
+    },
+    "str-equalsIgnoreCase": {
+      "prefix": ".equalsIgnoreCase",
+      "body": "${1:srcString}.equalsIgnoreCase( '${2:string}' )",
+      "description":"SPA - String.equalsIgnoreCase"
+    },
+    "str-extractStrBetweenIn": {
+      "prefix": ".extractStrBetweenIn",
+      "body": "${1:srcString}.extractStrBetweenIn( '${2:beginString}', '${3:endString}' );",
+      "description":"SPA - String.extractStrBetweenIn\nReturns: array"
+    },
+    "str-extractStrBetweenEx": {
+      "prefix": ".extractStrBetweenEx",
+      "body": "${1:srcString}.extractStrBetweenEx( '${2:beginString}', '${3:endString}' );",
+      "description":"SPA - String.extractStrBetweenEx\nReturns: array"
+    },
+    "str-getLeftStrByIndex": {
+      "prefix": ".getLeftStrByIndex",
+      "body": "${1:srcString}.getLeftStr( ${2:splitFromIndexNumber} );",
+      "description":"SPA - String.getLeftStr"
+    },
+    "str-getLeftStrByStr": {
+      "prefix": ".getLeftStrByStr",
+      "body": "${1:srcString}.getLeftStr( '${2:splitString}' );",
+      "description":"SPA - String.getLeftStr"
+    },
+    "str-getRightStrByIndex": {
+      "prefix": ".getRightStrByIndex",
+      "body": "${1:srcString}.getRightStr( ${2:splitFromIndexNumber} );",
+      "description":"SPA - String.getRightStr"
+    },
+    "str-getRightStrByStr": {
+      "prefix": ".getRightStrByStr",
+      "body": "${1:srcString}.getRightStr( '${2:splitString}' );",
+      "description":"SPA - String.getRightStr"
+    },
+    "str-isBlankStr": {
+      "prefix": ".isBlankStr",
+      "body": "${1:srcString}.isBlankStr()",
+      "description":"SPA - String.isBlankStr"
+    },
+    "str-ifBlankStr": {
+      "prefix": ".ifBlankStr",
+      "body": "${1:srcString}.ifBlankStr( '${2:forBlank}', '${3:optional-forNotBlank}' );",
+      "description":"SPA - String.ifBlankStr\nReturns: String"
+    },
+    "str-isNumberStr": {
+      "prefix": ".isNumberStr",
+      "body": "${1:srcString}.isNumberStr()",
+      "description":"SPA - String.isNumberStr"
+    },
+    "str-trimStr": {
+      "prefix": ".trimStr",
+      "body": "${1:srcString}.trimStr( '${2:trimStr}' );",
+      "description":"SPA - String.trimStr"
+    },
+    "str-trimLeftStr": {
+      "prefix": ".trimLeftStr",
+      "body": "${1:srcString}.trimLeftStr( '${2:trimStr}' );",
+      "description":"SPA - String.trimLeftStr"
+    },
+    "str-trimRightStr": {
+      "prefix": ".trimRightStr",
+      "body": "${1:srcString}.trimRightStr( '${2:trimStr}' );",
+      "description":"SPA - String.trimRightStr"
+    },
+    "str-normalizeStr": {
+      "prefix": ".normalizeStr",
+      "body": "${1:srcString}.normalizeStr();",
+      "description":"SPA - String.normalizeStr"
+    },
+    "str-capitalize": {
+      "prefix": ".capitalize",
+      "body": "${1:srcString}.capitalize();",
+      "description":"SPA - String.capitalize"
+    },
+    "str-unCapitalize": {
+      "prefix": ".unCapitalize",
+      "body": "${1:srcString}.unCapitalize();",
+      "description":"SPA - String.unCapitalize"
+    },
+    "str-toProperCase": {
+      "prefix": ".toProperCase",
+      "body": "${1:srcString}.toProperCase();",
+      "description":"SPA - String.toProperCase"
+    },
+    "str-toJSON": {
+      "prefix": ".toJSON",
+      "body": "${1:srcString}.toJSON();",
+      "description":"SPA - String.toJSON"
+    },
+    "str-toNative": {
+      "prefix": ".toNative",
+      "body": "${1:srcString}.toNative();",
+      "description":"SPA - String.toNative"
+    },
+    "str-splitToArray": {
+      "prefix": ".splitToArray",
+      "body": "${1:srcString}.splitToArray( '${2:splitByStr}' );",
+      "description":"SPA - String.splitToArray\nReturns: array"
+    },
+
+    "obj-clone": {
+      "prefix": ".__clone",
+      "body": "${1:srcObject}.__clone();",
+      "description":"SPA - Object.__clone"
+    },
+    "obj-merge": {
+      "prefix": ".__merge",
+      "body": "${1:srcObject}.__merge( ${2:withObject1}, ${3:withObject2} );",
+      "description":"SPA - Object.__merge"
+    },
+    "obj-stringify": {
+      "prefix": ".__stringify",
+      "body": "${1:srcObject}.__stringify();",
+      "description":"SPA - Object.__stringify"
+    },
+    "obj-toQueryString": {
+      "prefix": ".__toQueryString",
+      "body": "${1:srcObject}.__toQueryString();",
+      "description":"SPA - Object.__toQueryString"
+    },
+    "obj-keys": {
+      "prefix": ".__keys",
+      "body": "${1:srcObject}.__keys();",
+      "description":"SPA - Object.__keys"
+    },
+    "obj-keysAll": {
+      "prefix": ".__keysAll",
+      "body": "${1:srcObject}.__keysAll();",
+      "description":"SPA - Object.__keysAll"
+    },
+    "obj-hasKey": {
+      "prefix": ".__hasKey",
+      "body": "${1:srcObject}.__hasKey( '${2:key.path.string}' )",
+      "description":"SPA - Object.__hasKey"
+    },
+    "obj-hasKeysAll": {
+      "prefix": ".__hasKeysAll",
+      "body": "${1:srcObject}.__hasKeys( '${2:key.path1}&${3:key.path2}' )",
+      "description":"SPA - Object.__hasKeys"
+    },
+    "obj-hasKeysAny": {
+      "prefix": ".__hasKeysAny",
+      "body": "${1:srcObject}.__hasKeys( '${2:key.path1}|${3:key.path2}' )",
+      "description":"SPA - Object.__hasKeys"
+    },
+    "obj-hasPrimaryKeysAll": {
+      "prefix": ".__hasPrimaryKeysAll",
+      "body": "${1:srcObject}.__hasPrimaryKeys( '${2:key.path1}&${3:key.path2}' )",
+      "description":"SPA - Object.__hasPrimaryKeys"
+    },
+    "obj-hasPrimaryKeysAny": {
+      "prefix": ".__hasPrimaryKeysAny",
+      "body": "${1:srcObject}.__hasPrimaryKeys( '${2:key.path1}|${3:key.path2}' )",
+      "description":"SPA - Object.__hasPrimaryKeys"
+    },
+    "obj-valueOf": {
+      "prefix": ".__valueOf",
+      "body": "${1:srcObject}.__valueOf( '${2:key.path}' )",
+      "description":"SPA - Object.__valueOf"
     }
   }
 }
