@@ -7,13 +7,22 @@ This is the vs code snippets extension for  [SPAjs](https://spa.js.org).
 ## Snippets
 Shortcuts In **[.html]** file:
 
+  !spa
+  !spa+bootstrap
+  !spa-component-html
+
+  cdn-bs-css
+  cdn-bs-js
+  cdn-spa-js
+
   spa$
   spa-component
-  x-component
   data-spa-component
   i18n-lang (in body tag)
   data-i18n-lang
   data-i18n
+
+  spa-components-defaults
 
 **template handlebars custom helpers**
 
