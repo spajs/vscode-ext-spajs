@@ -7,9 +7,9 @@ This is the vs code snippets extension for  [SPAjs](https://spa.js.org).
 ## Snippets
 Shortcuts In **[.html]** file:
 
-  !spa
-  !spa+bootstrap
-  !spa-component-html
+  !spa-html-boilerplate
+  !spa+bootstrap4-html-boilerplate
+  !spa-component-html-template
 
   cdn-bs-css
   cdn-bs-js
@@ -18,6 +18,7 @@ Shortcuts In **[.html]** file:
   spa$
   spa-component
   data-spa-component
+  data-spa-route
   i18n-lang (in body tag)
   data-i18n-lang
   data-i18n

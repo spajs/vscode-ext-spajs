@@ -29,12 +29,12 @@
     },
     "spa-component-remove": {
       "prefix": "spa$remove",
-      "body": "spa.\\$remove('${1:componentName}');{$0}",
+      "body": "spa.\\$remove('${1:componentName}');$0",
       "description":"Remove SPA Component from DOM"
     },
     "spa-component-destroy": {
       "prefix": "spa$destroy",
-      "body": "spa.\\$destroy('${1:componentName}');{$0}",
+      "body": "spa.\\$destroy('${1:componentName}');$0",
       "description":"Remove SPA Component from DOM and destroy its properties"
     },
     "spa-component-reference": {

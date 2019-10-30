@@ -1,17 +1,17 @@
 {
   ".html": {
     "html-spa": {
-      "prefix": "!spa",
+      "prefix": "!spa-html-boilerplate",
       "body":"<!DOCTYPE html>\n<html lang=\"en-US\">\n\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<title>${1:Single Page App}</title>\n$0\n</head>\n\n<body>\n\n\t<spa-component src=\"${2:rootComponentName}\"></spa-component>\n\n\t<script src=\"${3://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js}\"></script>\n\t<script src=\"${4://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js}\"></script>\n\t<script src=\"${5://cdn.jsdelivr.net/gh/sucom/SPA.js@latest/dist/spa-bundle.min.js}\"></script>\n\n</body>\n\n</html>",
       "description": "SPA - HTML boilerplate for SPA.js"
     },
     "html-spa-bs": {
-      "prefix": "!spa+bootstrap",
+      "prefix": "!spa+bootstrap-html-boilerplate",
       "body":"<!DOCTYPE html>\n<html lang=\"en-US\">\n\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<title>${1:Single Page App}</title>\n\n\t<link rel=\"stylesheet\" href=\"${8://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}\">\n$0\n</head>\n\n<body>\n\n\t<spa-component src=\"${2:rootComponentName}\"></spa-component>\n\n\t<script src=\"${3://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js}\"></script>\n\t<script src=\"${4://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}\"></script>\n\t<script src=\"${5://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}\"></script>\n\t<script src=\"${6://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js}\"></script>\n\t<script src=\"${7://cdn.jsdelivr.net/gh/sucom/SPA.js@latest/dist/spa-bundle.min.js}\"></script>\n\n</body>\n\n</html>",
       "description": "SPA - HTML boilerplate for SPA.js"
     },
     "html-spa-component": {
-      "prefix": "!spa-component-html",
+      "prefix": "!spa-component-html-template",
       "body":"<${1:section} class=\"container-component\" id=\"c_${TM_FILENAME_BASE}\">\n\t$0\n</${1:section}>",
       "description": "SPA - HTML boilerplate for SPA.js component"
     },
@@ -42,11 +42,6 @@
       "body": "<spa-component src=\"${1:componentName}\"></spa-component>",
       "description":"SPA - Render Component here using tag"
     },
-    "spa-comp": {
-      "prefix": "spa-comp",
-      "body": "<spa-component src=\"${1:componentName}\"></spa-component>",
-      "description":"SPA - Render Component here using tag"
-    },
     "data-spa-component": {
       "prefix": "spa-component-data-attr",
       "body": "data-spa-component=\"${1:componentName}\"",
@@ -69,18 +64,23 @@
       "description":"SPA - i18n for language switch/change"
     },
 
+    "data-spa-route": {
+      "prefix": "data-spa-route",
+      "body": "data-spa-route=\"${1}\"",
+      "description":"SPA - i18n for language switch/change"
+    },
     "spa-nav-show": {
-      "prefix": ".spa-nav-show",
+      "prefix": "spa-show-nav-class",
       "body": "SHOW-SPA-NAV",
       "description":"SPA - Navigation control using body class to show url routes."
     },
     "spa-nav-hide": {
-      "prefix": ".spa-nav-hide",
+      "prefix": "spa-hide-nav-class",
       "body": "HIDE-SPA-NAV",
       "description":"SPA - Navigation control using body class to hide url routes."
     },
     "spa-nav-block": {
-      "prefix": ".spa-nav-block",
+      "prefix": "spa-block-nav-class",
       "body": "BLOCK-SPA-NAV",
       "description":"SPA - Navigation control using body class to block browser's back/forward navigation."
     },
