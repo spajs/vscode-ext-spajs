@@ -2,69 +2,49 @@
   ".js": {
     "spa-component": {
       "prefix": "spa$",
-      "body": "spa.\\$('${TM_FILENAME_BASE}', {\n\ttarget:'${1:#targetElementId}'$0\n});",
+      "body": "spa.\\$('${TM_FILENAME_BASE}', {\n\t${1|require,style,target,templateUrl,dataUrl|}: '${2}'$0\n});",
       "description":"Define SPA Component"
     },
 
-    "spa-comp-prop-target": {
-      "prefix": ".target",
-      "body": "target:'${1:#targetElementId}'$0",
-      "description":"SPA Component prop: target"
-    },
-    "spa-comp-prop-data": {
-      "prefix": ".data",
-      "body": "data: {$0}",
-      "description":"SPA Component prop: data"
-    },
-    "spa-comp-prop-dataUrl": {
-      "prefix": ".dataUrl",
-      "body": "dataUrl: '$0'",
-      "description":"SPA Component prop: dataUrl"
-    },
-    "spa-comp-prop-dataUrlMethod": {
-      "prefix": ".dataUrlMethod",
-      "body": "dataUrlMethod: '${1|GET,POST,PUT,DELETE|}'$0",
-      "description":"SPA Component prop: dataUrlMethod"
-    },
-    "spa-comp-prop-dataUrlParams": {
-      "prefix": ".dataUrlParams",
-      "body": "dataUrlParams: {$0}",
-      "description":"SPA Component prop: dataUrlParams"
-    },
-    "spa-comp-prop-dataParams": {
-      "prefix": ".dataParams",
-      "body": "dataParams: {$0}",
-      "description":"SPA Component prop: dataParams"
-    },
-    "spa-comp-prop-dataDefaults": {
-      "prefix": ".dataDefaults",
-      "body": "dataDefaults: {$0}",
-      "description":"SPA Component prop: dataDefaults"
-    },
-    "spa-comp-prop-dataProcess": {
-      "prefix": ".dataProcess",
-      "body": "dataProcess: function(templateData){\n\t$0\n\treturn templateData;\n}",
-      "description":"SPA Component prop: dataProcess"
+    "spa-comp-prop-x": {
+      "prefix": ["spa$.", "$."],
+      "body": "${1|require,target,style,styleCache,styles,stylesCache,scripts,scriptsCache,template,templateCache,templateScript,templateUrl,templateUrlMethod,templateUrlParams,templateUrlPayload,templateUrlHeaders,onTemplateUrlError,data,dataUrl,dataUrlCache,dataUrlMethod,dataUrlParams,dataUrlHeaders,dataParams,dataModel,dataCache,dataDefaults,onDataUrlError,onError,dataValidate,dataProcess,dataPreRequest,dataPreProcessAsync,onRender,onRefresh,onRemove,renderCallback,refreshCallback,events|}: $0",
+      "description":"SPA Component base properties"
     },
 
     "spa-component-extend": {
       "prefix": "spa$extend",
       "body": "spa.\\$extend('${TM_FILENAME_BASE}', {\n\trenderCallback: function(){\n\t\t//console.log(this.\\$data);\n\t\t//TODO: doSomething here.\n\t},\n\n\t${3:doSomething}: function(){\n\t\t${4://TODO: doSomething here.}$0\n\t},\n\n\tevents: [\n\t\t{ target:'${1:#target element .selector}',\n\t\t\ton${2|Click,Dblclick,Mouseenter,Mouseleave,Keydown,Keyup,Keypress,Focus,Blur,Change,Submit|}: function( event ){\n\t\t\t\t//TODO: doSomething here.\n\t\t\t\tapp.${TM_FILENAME_BASE}.${3:doSomething}();\n\t\t\t}\n\t\t}\n\t]\n});",
-      "description":"Extend SPA Component"
+      "description":"Extend SPA Component (deprecated)"
     },
     "spa-component-render": {
       "prefix": "spa$render",
       "body": "spa.\\$render('${1:componentName}', {$0});",
       "description":"Render SPA Component"
     },
+    "spa-component-refresh": {
+      "prefix": "spa$refresh",
+      "body": "spa.\\$refresh('${1:componentName}', {$0});",
+      "description":"Refresh SPA Component"
+    },
+    "spa-component-remove": {
+      "prefix": "spa$remove",
+      "body": "spa.\\$remove('${1:componentName}');{$0}",
+      "description":"Remove SPA Component from DOM"
+    },
+    "spa-component-destroy": {
+      "prefix": "spa$destroy",
+      "body": "spa.\\$destroy('${1:componentName}');{$0}",
+      "description":"Remove SPA Component from DOM and destroy its properties"
+    },
     "spa-component-reference": {
-      "prefix": "spa$..",
+      "prefix": ["spa$..", "$.."],
       "body": "app.${1:${TM_FILENAME_BASE}}.${2:property}$0;",
       "description":"SPA Component Reference"
     },
     "app-component-reference": {
       "prefix": "app$..",
-      "body": "app.${1:${TM_FILENAME_BASE}}.${2:property}$0;",
+      "body": "app.${1:componentX}.${2:property}$0;",
       "description":"SPA Component Reference"
     },
     "spa-bindData": {
