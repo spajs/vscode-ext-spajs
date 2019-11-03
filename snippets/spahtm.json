@@ -11,8 +11,8 @@
       "description": "SPA - HTML boilerplate for SPA.js"
     },
     "html-spa-component": {
-      "prefix": "!spa-component-html-template",
-      "body":"<${1:section} class=\"container-component\" id=\"c_${TM_FILENAME_BASE}\">\n\t$0\n</${1:section}>",
+      "prefix": "!spa-component-template",
+      "body":"<${1:section} class=\"container-component\" id=\"c_${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+_}${6:+_}$6/g}\">\n\t$0\n</${1:section}>",
       "description": "SPA - HTML boilerplate for SPA.js component"
     },
 
@@ -32,18 +32,13 @@
       "description": "SPA JS cdn src"
     },
 
-    "data-spa-$": {
-      "prefix": "spa$",
-      "body": "<spa-component src=\"${1:componentName}\"></spa-component>",
-      "description":"SPA - Render Component here using tag"
-    },
-    "spa-component": {
-      "prefix": "spa-component",
+    "spa-html-component": {
+      "prefix": ["spa$", "spa-component"],
       "body": "<spa-component src=\"${1:componentName}\"></spa-component>",
       "description":"SPA - Render Component here using tag"
     },
     "data-spa-component": {
-      "prefix": "spa-component-data-attr",
+      "prefix": "data-spa-component",
       "body": "data-spa-component=\"${1:componentName}\"",
       "description":"SPA - Render Component here using attribute"
     },
@@ -67,8 +62,14 @@
     "data-spa-route": {
       "prefix": "data-spa-route",
       "body": "data-spa-route=\"${1}\"",
-      "description":"SPA - i18n for language switch/change"
+      "description":"SPA - Routing Path"
     },
+    "data-spa-route-params": {
+      "prefix": "data-spa-route-params",
+      "body": "data-spa-route-params=\"${1:param1}:'$0'\"",
+      "description":"SPA - Routing Parameters"
+    },
+
     "spa-nav-show": {
       "prefix": "spa-show-nav-class",
       "body": "SHOW-SPA-NAV",

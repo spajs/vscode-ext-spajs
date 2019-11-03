@@ -1,9 +1,31 @@
 {
   ".js": {
+    "spa-component-path": {
+      "prefix": ["spa$path", "spa$/"],
+      "body":"${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+/}${6:+/}$6/g}$0",
+      "description":"SPA Component Path (componentX/componentY/ComponentZ)"
+    },
+    "spa-component-key": {
+      "prefix": ["spa$key", "spa$#", "spa$_", "spa$name"],
+      "body":"${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+_}${6:+_}$6/g}$0",
+      "description":"SPA Component Key (componentX_componentY_ComponentZ)"
+    },
     "spa-component": {
-      "prefix": "spa$",
-      "body": "spa.\\$('${TM_FILENAME_BASE}', {\n\t${1|require,style,target,templateUrl,dataUrl|}: '${2}'$0\n});",
+      "prefix": ["spa$", "spa.$"],
+      "body": "spa.\\$('${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+/}${6:+/}$6/g}', {\n\t${1|require,style,target,templateUrl,dataUrl|}: '${2}'$0\n});",
       "description":"Define SPA Component"
+    },
+
+    "spa-component-file": {
+      "prefix": ["spa$filename"],
+      "body":"${TM_FILENAME_BASE}$0",
+      "description":"This File name"
+    },
+
+    "spa-component-sourceURL": {
+      "prefix": ["spa$sourceURL", "//#sourceURL"],
+      "body":"//# sourceURL=spa$/${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+/}${6:+/}$6/g}/${TM_FILENAME}$0",
+      "description":"//# SourceMap=file/path"
     },
 
     "spa-comp-prop-x": {
@@ -13,43 +35,43 @@
     },
 
     "spa-component-extend": {
-      "prefix": "spa$extend",
-      "body": "spa.\\$extend('${TM_FILENAME_BASE}', {\n\trenderCallback: function(){\n\t\t//console.log(this.\\$data);\n\t\t//TODO: doSomething here.\n\t},\n\n\t${3:doSomething}: function(){\n\t\t${4://TODO: doSomething here.}$0\n\t},\n\n\tevents: [\n\t\t{ target:'${1:#target element .selector}',\n\t\t\ton${2|Click,Dblclick,Mouseenter,Mouseleave,Keydown,Keyup,Keypress,Focus,Blur,Change,Submit|}: function( event ){\n\t\t\t\t//TODO: doSomething here.\n\t\t\t\tapp.${TM_FILENAME_BASE}.${3:doSomething}();\n\t\t\t}\n\t\t}\n\t]\n});",
+      "prefix": ["spa$extend", "spa.$extend"],
+      "body": "spa.\\$extend('${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+/}${6:+/}$6/g}', {\n\trenderCallback: function(){\n\t\t//console.log(this.\\$data);\n\t\t//TODO: doSomething here.\n\t},\n\n\t${3:doSomething}: function(){\n\t\t${4://TODO: doSomething here.}$0\n\t},\n\n\tevents: [\n\t\t{ target:'${1:#target element .selector}',\n\t\t\ton${2|Click,Dblclick,Mouseenter,Mouseleave,Keydown,Keyup,Keypress,Focus,Blur,Change,Submit|}: function( event ){\n\t\t\t\t//TODO: doSomething here.\n\t\t\t\tapp.${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+_}${6:+_}$6/g}.${3:doSomething}();\n\t\t\t}\n\t\t}\n\t]\n});",
       "description":"Extend SPA Component (deprecated)"
     },
     "spa-component-render": {
-      "prefix": "spa$render",
+      "prefix": ["spa$render", "spa.$render"],
       "body": "spa.\\$render('${1:componentName}', {$0});",
       "description":"Render SPA Component"
     },
     "spa-component-refresh": {
-      "prefix": "spa$refresh",
+      "prefix": ["spa$refresh", "spa.$refresh"],
       "body": "spa.\\$refresh('${1:componentName}', {$0});",
       "description":"Refresh SPA Component"
     },
     "spa-component-remove": {
-      "prefix": "spa$remove",
+      "prefix": ["spa$remove", "spa.$remove"],
       "body": "spa.\\$remove('${1:componentName}');$0",
       "description":"Remove SPA Component from DOM"
     },
     "spa-component-destroy": {
-      "prefix": "spa$destroy",
+      "prefix": ["spa$destroy", "spa.$destroy"],
       "body": "spa.\\$destroy('${1:componentName}');$0",
       "description":"Remove SPA Component from DOM and destroy its properties"
     },
     "spa-component-reference": {
       "prefix": ["spa$..", "$.."],
-      "body": "app.${1:${TM_FILENAME_BASE}}.${2:property}$0;",
+      "body": "app.${1:${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+_}${6:+_}$6/g}}.${2:property}$0",
       "description":"SPA Component Reference"
     },
     "app-component-reference": {
-      "prefix": "app$..",
-      "body": "app.${1:componentX}.${2:property}$0;",
+      "prefix": ["app$..", "app.$"],
+      "body": "app.${1:componentX}.${2:property}$0",
       "description":"SPA Component Reference"
     },
     "spa-bindData": {
       "prefix": "spa.bindData",
-      "body": "spa.bindData( '${1:#contextRoot}', ${2:dataObject}, '${3:.elementFilter}' );",
+      "body": "spa.bindData( '${1:#contextRoot}', ${2:dataObject}, '${3:.elementFilter}' );$0",
       "description":"SPA - Data Bind instead of re-render. same as spa.dataBind"
     },
     "spa-defaults": {
@@ -59,167 +81,167 @@
     },
     "spa-dataBind": {
       "prefix": "spa.dataBind",
-      "body": "spa.dataBind( '${1:#contextRoot}', ${2:dataObject}, '${3:.elementFilter}' );",
+      "body": "spa.dataBind( '${1:#contextRoot}', ${2:dataObject}, '${3:.elementFilter}' );$0",
       "description":"SPA - Data Bind instead of re-render. same as spa.bindData"
     },
     "spa-doDataValidation": {
       "prefix": "spa.doDataValidation",
-      "body": "spa.doDataValidation( '#${1:formID}' );",
+      "body": "spa.doDataValidation( '#${1:formID}' )$0",
       "description":"SPA - dataValidation - Silent"
     },
     "spa-doDataValidation-showErrorMsg": {
       "prefix": "spa.doDataValidation",
-      "body": "spa.doDataValidation( '#${1:formID}', true );",
+      "body": "spa.doDataValidation( '#${1:formID}', true )$0",
       "description":"SPA - dataValidation - Show Error Msg"
     },
     "spa-findSafe": {
       "prefix": "spa.findInObj",
-      "body": "spa.findSafe( ${1:objectName}, '${2:key.path}' );",
+      "body": "spa.findSafe( ${1:objectName}, '${2:key.path}' );$0",
       "description":"SPA - find in Object"
     },
     "spa-getElValue": {
       "prefix": "spa.getElValue",
-      "body": "spa.getElValue( '#${1:elementID}' );",
+      "body": "spa.getElValue( '#${1:elementID}' )$0",
       "description":"SPA - get DOM Element value"
     },
     "spa-getElValue-EscHtml": {
       "prefix": "spa.getElValue",
-      "body": "spa.getElValue( '#${1:elementID}', true );",
+      "body": "spa.getElValue( '#${1:elementID}', true )$0",
       "description":"SPA - get DOM Element value and Escape HTML.\nReturns: string"
     },
     "spa-getLocHash": {
       "prefix": "spa.getLocHash",
-      "body": "spa.getLocHash();",
+      "body": "spa.getLocHash();$0",
       "description":"SPA - get window.location.hash"
     },
     "spa-getModifiedElements": {
       "prefix": "spa.getModifiedElements",
-      "body": "spa.getModifiedElements( '#${1:formID}' );",
+      "body": "spa.getModifiedElements( '#${1:formID}' );$0",
       "description":"SPA - get modified elements list.\nReturns: array"
     },
     "spa-hasKey": {
       "prefix": "spa.hasKey",
-      "body": "spa.hasKey( ${1:Object}, '${2:key.full.path}' );",
+      "body": "spa.hasKey( ${1:Object}, '${2:key.full.path}' )$0",
       "description":"SPA - find in object is path exists?.\nReturns: boolean."
     },
     "spa-hasKeyIgnoreCase": {
       "prefix": "spa.hasKeyIgnoreCase",
-      "body": "spa.hasKeyIgnoreCase( ${1:Object}, '${2:key.full.path}' );",
+      "body": "spa.hasKeyIgnoreCase( ${1:Object}, '${2:key.full.path}' )$0",
       "description":"SPA - find in object is path exists?.\nReturns: boolean."
     },
     "spa-hasKeys-all": {
       "prefix": "spa.hasKeys",
-      "body": "spa.hasKeys( ${1:Object}, '${2:key.full.path.1},${3:key.full.path.2}' );",
+      "body": "spa.hasKeys( ${1:Object}, '${2:key.full.path.1},${3:key.full.path.2}' )$0",
       "description":"SPA - find in object are ALL key-paths exist?.\nReturns: boolean."
     },
     "spa-hasKeys-any": {
       "prefix": "spa.hasKeys",
-      "body": "spa.hasKeys( ${1:Object}, '${2:key.full.path.1}|${3:key.full.path.2}' );",
+      "body": "spa.hasKeys( ${1:Object}, '${2:key.full.path.1}|${3:key.full.path.2}' )$0",
       "description":"SPA - find in object is ANY ONE key-path exist?.\nReturns: boolean."
     },
     "spa-hasPrimaryKeys-all": {
       "prefix": "spa.hasPrimaryKeys",
-      "body": "spa.hasPrimaryKeys( ${1:Object}, '${2:primaryKey1},${3:primaryKey2}' );",
+      "body": "spa.hasPrimaryKeys( ${1:Object}, '${2:primaryKey1},${3:primaryKey2}' )$0",
       "description":"SPA - find in object are ALL primary keys exist?.\nReturns: boolean."
     },
     "spa-hasPrimaryKeys-any": {
       "prefix": "spa.hasPrimaryKeys",
-      "body": "spa.hasPrimaryKeys( ${1:Object}, '${2:primaryKey1}|${3:primaryKey2}' );",
+      "body": "spa.hasPrimaryKeys( ${1:Object}, '${2:primaryKey1}|${3:primaryKey2}' )$0",
       "description":"SPA - find in object is ANY on primary key exists?.\nReturns: boolean."
     },
     "spa-i18n-text": {
       "prefix": "spa.i18n.text",
-      "body": "spa.i18n.text( '${1:i18n.key}', ${2:optionalParamsObject} );",
+      "body": "spa.i18n.text( '${1:i18n.key}', ${2:optionalParamsObject} )$0",
       "description":"SPA - i18n text for key.\nReturns: string."
     },
     "spa-i18n-apply": {
       "prefix": "spa.i18n.apply",
-      "body": "spa.i18n.apply( '#${1:OptionalContext}', '${2:optionalElementSelector}' );",
+      "body": "spa.i18n.apply( '#${1:OptionalContext}', '${2:optionalElementSelector}' );$0",
       "description":"SPA - apply i18n text on the element(s) in the context/scope."
     },
     "spa-is": {
       "prefix": "spa.is",
-      "body": "spa.is( ${1:variable}, '${2|array,boolean,function,number,null,object,string,undefined|}|${3|array,boolean,function,number,null,object,string,undefined|}' );",
+      "body": "spa.is( ${1:variable}, '${2|array,boolean,function,number,null,object,string,undefined|}|${3|array,boolean,function,number,null,object,string,undefined|}' )$0",
       "description":"SPA - check variable type.\nReturns: boolean."
     },
     "spa-isBlank": {
       "prefix": "spa.isBlank",
-      "body": "spa.isBlank( ${1:variable} );",
+      "body": "spa.isBlank( ${1:variable} )$0",
       "description":"SPA - check is variable blank(string) or empty(array/object) or null or undefined?\nReturns: boolean."
     },
     "spa-isElementExist": {
       "prefix": "spa.isElementExist",
-      "body": "spa.isElementExist( '${1:elementSelector}' );",
+      "body": "spa.isElementExist( '${1:elementSelector}' )$0",
       "description":"SPA - check is HTML element exists?\nReturns: boolean."
     },
     "spa-isElValueChanged": {
       "prefix": "spa.isElValueChanged",
-      "body": "spa.isElValueChanged( '${1:elementSelector}' );",
+      "body": "spa.isElValueChanged( '${1:elementSelector}' )$0",
       "description":"SPA - check is HTML element value changed?\nReturns: boolean."
     },
     "spa-now": {
       "prefix": "spa.now",
-      "body": "spa.now();",
+      "body": "spa.now()$0",
       "description":"SPA - Now: current time in milliseconds"
     },
     "spa-onUrlHashChange": {
       "prefix": "spa.onUrlHashChange",
-      "body": "spa.onUrlHashChange = function( urlHash ){\n\t\t${1}\n\t};",
+      "body": "spa.onUrlHashChange = function( urlHash ){\n\t\t${1}\n\t};$0",
       "description":"SPA - event onUrlHashChange."
     },
     "spa-pickOnSplit": {
       "prefix": "spa.pickOnSplit",
-      "body": "spa.pickOnSplit( '${1:string}', '${2:splitBy}', ${3:pickIndex} );",
+      "body": "spa.pickOnSplit( '${1:string}', '${2:splitBy}', ${3:pickIndex} );$0",
       "description":"SPA - Pick on Split"
     },
     "spa-pickOnLastSplit": {
       "prefix": "spa.pickOnLastSplit",
-      "body": "spa.pickOnSplit( ${1:pickIndex} );",
-      "description":"SPA - Pick on prevous split"
+      "body": "spa.pickOnSplit( ${1:pickIndex} );$0",
+      "description":"SPA - Pick on previous split"
     },
     "spa-queryStringToObject": {
       "prefix": "spa.queryStringToObject",
-      "body": "spa.queryStringToObject( '${1:optionalQryString}' );",
+      "body": "spa.queryStringToObject( '${1:optionalQryString}' );$0",
       "description":"SPA - URL query string (name=value&...) to json object.\nReturns: object."
     },
     "spa-rand": {
       "prefix": "spa.rand",
-      "body": "spa.rand( ${1:min}, ${2:max} );",
+      "body": "spa.rand( ${1:min}, ${2:max} )$0",
       "description":"SPA - random number between min and max."
     },
     "spa-randomPassword": {
       "prefix": "spa.randomPassword",
-      "body": "spa.randomPassword( ${1:length}, '${2:optionalString}' );",
+      "body": "spa.randomPassword( ${1:length}, '${2:optionalString}' );$0",
       "description":"SPA - random password."
     },
     "spa-range": {
       "prefix": "spa.range",
-      "body": "spa.range( '${1:min}..${2:max}' );",
+      "body": "spa.range( '${1:min}..${2:max}' );$0",
       "description":"SPA - range from min to max by step 1."
     },
     "spa-range-byStep": {
       "prefix": "spa.range",
-      "body": "spa.range( '${1:min}..${2:max}:${3:stepBy}' );",
+      "body": "spa.range( '${1:min}..${2:max}:${3:stepBy}' );$0",
       "description":"SPA - range from min to max by stepBy."
     },
     "spa-range-year": {
       "prefix": "spa.range",
-      "body": "spa.range( 'Y-${1:Number}..Y+${2:Number}' );",
+      "body": "spa.range( 'Y-${1:Number}..Y+${2:Number}' );$0",
       "description":"SPA - year range from currentYear-N to currentYear+N."
     },
     "spa-resetElementsDefaultValue": {
       "prefix": "spa.resetElementsDefaultValue",
-      "body": "spa.resetElementsDefaultValue( '${1:elementsSelector}' );",
+      "body": "spa.resetElementsDefaultValue( '${1:elementsSelector}' );$0",
       "description":"SPA - reset element(s)' default value."
     },
     "spa-serializeFormToSimpleObject": {
       "prefix": "spa.serializeFormToSimpleObject",
-      "body": "spa.serializeFormToSimpleObject( '#${1:formID}' );",
+      "body": "spa.serializeFormToSimpleObject( '#${1:formID}' );$0",
       "description":"SPA - serialize form element values to simple object."
     },
     "spa-serializeFormToObject": {
       "prefix": "spa.serializeFormToObject",
-      "body": "spa.serializeFormToObject( '#${1:formID}' );",
+      "body": "spa.serializeFormToObject( '#${1:formID}' );$0",
       "description":"SPA - serialize form element values to object."
     },
     "spa-toQueryString": {
@@ -229,219 +251,219 @@
     },
     "spa-year": {
       "prefix": "spa.year",
-      "body": "spa.year( ${1:+/-number} );",
+      "body": "spa.year( ${1:+/-number} );$0",
       "description":"SPA - year: with + or - count. Default current year."
     },
     "spa-urlHash": {
       "prefix": "spa.urlHash",
-      "body": "spa.urlHash();",
+      "body": "spa.urlHash();$0",
       "description":"SPA - urlHash:\nReturns: '/hash0/hash1/hash2'"
     },
     "spa-urlHashByIndex": {
       "prefix": "spa.urlHash",
-      "body": "spa.urlHash( ${1:hashIndexNumber} );",
+      "body": "spa.urlHash( ${1:hashIndexNumber} );$0",
       "description":"SPA - urlHash:\nReturns: string"
     },
     "spa-urlHashAsArray": {
       "prefix": "spa.urlHash",
-      "body": "spa.urlHash( [] );",
+      "body": "spa.urlHash( [] );$0",
       "description":"SPA - urlHash:\nReturns: array"
     },
     "spa-urlHashAsObject": {
       "prefix": "spa.urlHash",
-      "body": "spa.urlHash( ['${1:key0}', '${1:key1}'] );",
+      "body": "spa.urlHash( ['${1:key0}', '${1:key1}'] );$0",
       "description":"SPA - urlHash:\nReturns: object"
     },
 
     "str-beginsWithStr": {
       "prefix": ".beginsWithStr",
-      "body": "${1:srcString}.beginsWithStr( '${2:string}' )",
+      "body": "${1:srcString}.beginsWithStr( '${2:string}' )$0",
       "description":"SPA - String.beginsWithStr"
     },
     "str-beginsWithStrIgnoreCase": {
       "prefix": ".beginsWithStrIgnoreCase",
-      "body": "${1:srcString}.beginsWithStrIgnoreCase( '${2:string}' )",
+      "body": "${1:srcString}.beginsWithStrIgnoreCase( '${2:string}' )$0",
       "description":"SPA - String.beginsWithStrIgnoreCase"
     },
     "str-endsWithStr": {
       "prefix": ".endsWithStr",
-      "body": "${1:srcString}.endsWithStr( '${2:string}' )",
+      "body": "${1:srcString}.endsWithStr( '${2:string}' )$0",
       "description":"SPA - String.endsWithStr"
     },
     "str-endsWithStrIgnoreCase": {
       "prefix": ".endsWithStrIgnoreCase",
-      "body": "${1:srcString}.endsWithStrIgnoreCase( '${2:string}' )",
+      "body": "${1:srcString}.endsWithStrIgnoreCase( '${2:string}' )$0",
       "description":"SPA - String.endsWithStrIgnoreCase"
     },
     "str-containsStr": {
       "prefix": ".containsStr",
-      "body": "${1:srcString}.containsStr( '${2:string}' )",
+      "body": "${1:srcString}.containsStr( '${2:string}' )$0",
       "description":"SPA - String.containsStr"
     },
     "str-containsStrIgnoreCase": {
       "prefix": ".containsStrIgnoreCase",
-      "body": "${1:srcString}.containsStrIgnoreCase( '${2:string}' )",
+      "body": "${1:srcString}.containsStrIgnoreCase( '${2:string}' )$0",
       "description":"SPA - String.containsStrIgnoreCase"
     },
     "str-equalsIgnoreCase": {
       "prefix": ".equalsIgnoreCase",
-      "body": "${1:srcString}.equalsIgnoreCase( '${2:string}' )",
+      "body": "${1:srcString}.equalsIgnoreCase( '${2:string}' )$0",
       "description":"SPA - String.equalsIgnoreCase"
     },
     "str-extractStrBetweenIn": {
       "prefix": ".extractStrBetweenIn",
-      "body": "${1:srcString}.extractStrBetweenIn( '${2:beginString}', '${3:endString}' );",
+      "body": "${1:srcString}.extractStrBetweenIn( '${2:beginString}', '${3:endString}' );$0",
       "description":"SPA - String.extractStrBetweenIn\nReturns: array"
     },
     "str-extractStrBetweenEx": {
       "prefix": ".extractStrBetweenEx",
-      "body": "${1:srcString}.extractStrBetweenEx( '${2:beginString}', '${3:endString}' );",
+      "body": "${1:srcString}.extractStrBetweenEx( '${2:beginString}', '${3:endString}' );$0",
       "description":"SPA - String.extractStrBetweenEx\nReturns: array"
     },
     "str-getLeftStrByIndex": {
       "prefix": ".getLeftStrByIndex",
-      "body": "${1:srcString}.getLeftStr( ${2:splitFromIndexNumber} );",
+      "body": "${1:srcString}.getLeftStr( ${2:splitFromIndexNumber} );$0",
       "description":"SPA - String.getLeftStr"
     },
     "str-getLeftStrByStr": {
       "prefix": ".getLeftStrByStr",
-      "body": "${1:srcString}.getLeftStr( '${2:splitString}' );",
+      "body": "${1:srcString}.getLeftStr( '${2:splitString}' );$0",
       "description":"SPA - String.getLeftStr"
     },
     "str-getRightStrByIndex": {
       "prefix": ".getRightStrByIndex",
-      "body": "${1:srcString}.getRightStr( ${2:splitFromIndexNumber} );",
+      "body": "${1:srcString}.getRightStr( ${2:splitFromIndexNumber} );$0",
       "description":"SPA - String.getRightStr"
     },
     "str-getRightStrByStr": {
       "prefix": ".getRightStrByStr",
-      "body": "${1:srcString}.getRightStr( '${2:splitString}' );",
+      "body": "${1:srcString}.getRightStr( '${2:splitString}' );$0",
       "description":"SPA - String.getRightStr"
     },
     "str-isBlankStr": {
       "prefix": ".isBlankStr",
-      "body": "${1:srcString}.isBlankStr()",
+      "body": "${1:srcString}.isBlankStr()$0",
       "description":"SPA - String.isBlankStr"
     },
     "str-ifBlankStr": {
       "prefix": ".ifBlankStr",
-      "body": "${1:srcString}.ifBlankStr( '${2:forBlank}', '${3:optional-forNotBlank}' );",
+      "body": "${1:srcString}.ifBlankStr( '${2:forBlank}', '${3:optional-forNotBlank}' );$0",
       "description":"SPA - String.ifBlankStr\nReturns: String"
     },
     "str-isNumberStr": {
       "prefix": ".isNumberStr",
-      "body": "${1:srcString}.isNumberStr()",
+      "body": "${1:srcString}.isNumberStr()$0",
       "description":"SPA - String.isNumberStr"
     },
     "str-trimStr": {
       "prefix": ".trimStr",
-      "body": "${1:srcString}.trimStr( '${2:trimStr}' );",
+      "body": "${1:srcString}.trimStr( '${2:trimStr}' );$0",
       "description":"SPA - String.trimStr"
     },
     "str-trimLeftStr": {
       "prefix": ".trimLeftStr",
-      "body": "${1:srcString}.trimLeftStr( '${2:trimStr}' );",
+      "body": "${1:srcString}.trimLeftStr( '${2:trimStr}' );$0",
       "description":"SPA - String.trimLeftStr"
     },
     "str-trimRightStr": {
       "prefix": ".trimRightStr",
-      "body": "${1:srcString}.trimRightStr( '${2:trimStr}' );",
+      "body": "${1:srcString}.trimRightStr( '${2:trimStr}' );$0",
       "description":"SPA - String.trimRightStr"
     },
     "str-normalizeStr": {
       "prefix": ".normalizeStr",
-      "body": "${1:srcString}.normalizeStr();",
+      "body": "${1:srcString}.normalizeStr();$0",
       "description":"SPA - String.normalizeStr"
     },
     "str-capitalize": {
       "prefix": ".capitalize",
-      "body": "${1:srcString}.capitalize();",
+      "body": "${1:srcString}.capitalize();$0",
       "description":"SPA - String.capitalize"
     },
     "str-unCapitalize": {
       "prefix": ".unCapitalize",
-      "body": "${1:srcString}.unCapitalize();",
+      "body": "${1:srcString}.unCapitalize();$0",
       "description":"SPA - String.unCapitalize"
     },
     "str-toProperCase": {
       "prefix": ".toProperCase",
-      "body": "${1:srcString}.toProperCase();",
+      "body": "${1:srcString}.toProperCase();$0",
       "description":"SPA - String.toProperCase"
     },
     "str-toJSON": {
       "prefix": ".toJSON",
-      "body": "${1:srcString}.toJSON();",
+      "body": "${1:srcString}.toJSON();$0",
       "description":"SPA - String.toJSON"
     },
     "str-toNative": {
       "prefix": ".toNative",
-      "body": "${1:srcString}.toNative();",
+      "body": "${1:srcString}.toNative();$0",
       "description":"SPA - String.toNative"
     },
     "str-splitToArray": {
       "prefix": ".splitToArray",
-      "body": "${1:srcString}.splitToArray( '${2:splitByStr}' );",
+      "body": "${1:srcString}.splitToArray( '${2:splitByStr}' );$0",
       "description":"SPA - String.splitToArray\nReturns: array"
     },
 
     "obj-clone": {
       "prefix": ".__clone",
-      "body": "${1:srcObject}.__clone();",
+      "body": "${1:srcObject}.__clone();$0",
       "description":"SPA - Object.__clone"
     },
     "obj-merge": {
       "prefix": ".__merge",
-      "body": "${1:srcObject}.__merge( ${2:withObject1}, ${3:withObject2} );",
+      "body": "${1:srcObject}.__merge( ${2:withObject1}, ${3:withObject2} );$0",
       "description":"SPA - Object.__merge"
     },
     "obj-stringify": {
       "prefix": ".__stringify",
-      "body": "${1:srcObject}.__stringify();",
+      "body": "${1:srcObject}.__stringify();$0",
       "description":"SPA - Object.__stringify"
     },
     "obj-toQueryString": {
       "prefix": ".__toQueryString",
-      "body": "${1:srcObject}.__toQueryString();",
+      "body": "${1:srcObject}.__toQueryString();$0",
       "description":"SPA - Object.__toQueryString"
     },
     "obj-keys": {
       "prefix": ".__keys",
-      "body": "${1:srcObject}.__keys();",
+      "body": "${1:srcObject}.__keys();$0",
       "description":"SPA - Object.__keys"
     },
     "obj-keysAll": {
       "prefix": ".__keysAll",
-      "body": "${1:srcObject}.__keysAll();",
+      "body": "${1:srcObject}.__keysAll();$0",
       "description":"SPA - Object.__keysAll"
     },
     "obj-hasKey": {
       "prefix": ".__hasKey",
-      "body": "${1:srcObject}.__hasKey( '${2:key.path.string}' )",
+      "body": "${1:srcObject}.__hasKey( '${2:key.path.string}' )$0",
       "description":"SPA - Object.__hasKey"
     },
     "obj-hasKeysAll": {
       "prefix": ".__hasKeysAll",
-      "body": "${1:srcObject}.__hasKeys( '${2:key.path1}&${3:key.path2}' )",
+      "body": "${1:srcObject}.__hasKeys( '${2:key.path1}&${3:key.path2}' )$0",
       "description":"SPA - Object.__hasKeys"
     },
     "obj-hasKeysAny": {
       "prefix": ".__hasKeysAny",
-      "body": "${1:srcObject}.__hasKeys( '${2:key.path1}|${3:key.path2}' )",
+      "body": "${1:srcObject}.__hasKeys( '${2:key.path1}|${3:key.path2}' )$0",
       "description":"SPA - Object.__hasKeys"
     },
     "obj-hasPrimaryKeysAll": {
       "prefix": ".__hasPrimaryKeysAll",
-      "body": "${1:srcObject}.__hasPrimaryKeys( '${2:key.path1}&${3:key.path2}' )",
+      "body": "${1:srcObject}.__hasPrimaryKeys( '${2:key.path1}&${3:key.path2}' )$0",
       "description":"SPA - Object.__hasPrimaryKeys"
     },
     "obj-hasPrimaryKeysAny": {
       "prefix": ".__hasPrimaryKeysAny",
-      "body": "${1:srcObject}.__hasPrimaryKeys( '${2:key.path1}|${3:key.path2}' )",
+      "body": "${1:srcObject}.__hasPrimaryKeys( '${2:key.path1}|${3:key.path2}' )$0",
       "description":"SPA - Object.__hasPrimaryKeys"
     },
     "obj-valueOf": {
       "prefix": ".__valueOf",
-      "body": "${1:srcObject}.__valueOf( '${2:key.path}' )",
+      "body": "${1:srcObject}.__valueOf( '${2:key.path}' )$0",
       "description":"SPA - Object.__valueOf"
     }
   }
