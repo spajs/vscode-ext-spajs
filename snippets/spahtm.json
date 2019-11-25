@@ -1,35 +1,66 @@
 {
   ".html": {
     "html-spa": {
-      "prefix": "!spa-html-boilerplate",
-      "body":"<!DOCTYPE html>\n<html lang=\"en-US\">\n\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<title>${1:Single Page App}</title>\n$0\n</head>\n\n<body>\n\n\t<spa-component src=\"${2:rootComponentName}\"></spa-component>\n\n\t<script src=\"${3://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js}\"></script>\n\t<script src=\"${4://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js}\"></script>\n\t<script src=\"${5://cdn.jsdelivr.net/gh/sucom/SPA.js@latest/dist/spa-bundle.min.js}\"></script>\n\n</body>\n\n</html>",
+      "prefix": "!html-spa",
+      "body":"<!DOCTYPE html>\n<html lang=\"en-US\">\n\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\t<title>${1:Single Page App}</title>\n\n</head>\n\n<body>\n\n\t<spa-component src=\"${2:rootComponentName}\"></spa-component>\n$0\n\t<script src=\"${3://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js}\"></script>\n\t<script src=\"${4://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js}\"></script>\n\t<script src=\"${5://cdn.jsdelivr.net/gh/sucom/SPA.js/dist/spa-bundle.min.js}\"></script>\n\n</body>\n\n</html>",
       "description": "SPA - HTML boilerplate for SPA.js"
     },
     "html-spa-bs": {
-      "prefix": "!spa+bootstrap-html-boilerplate",
-      "body":"<!DOCTYPE html>\n<html lang=\"en-US\">\n\n<head>\n\t<meta charset=\"UTF-8\">\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<title>${1:Single Page App}</title>\n\n\t<link rel=\"stylesheet\" href=\"${8://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}\">\n$0\n</head>\n\n<body>\n\n\t<spa-component src=\"${2:rootComponentName}\"></spa-component>\n\n\t<script src=\"${3://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js}\"></script>\n\t<script src=\"${4://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}\"></script>\n\t<script src=\"${5://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}\"></script>\n\t<script src=\"${6://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js}\"></script>\n\t<script src=\"${7://cdn.jsdelivr.net/gh/sucom/SPA.js@latest/dist/spa-bundle.min.js}\"></script>\n\n</body>\n\n</html>",
-      "description": "SPA - HTML boilerplate for SPA.js"
+      "prefix": "!html-spa+bootstrap",
+      "body":"<!DOCTYPE html>\n<html lang=\"en-US\">\n\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\t<title>${1:Single Page App}</title>\n\n\t<link rel=\"stylesheet\" href=\"${8://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css}\" />\n\n</head>\n\n<body>\n\n\t<spa-component src=\"${2:rootComponentName}\"></spa-component>\n$0\n\t<script src=\"${3://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js}\"></script>\n\t<script src=\"${4://cdn.jsdelivr.net/npm/popper.js@latest/dist/umd/popper.min.js}\"></script>\n\t<script src=\"${5://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js}\"></script>\n\t<script src=\"${6://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js}\"></script>\n\t<script src=\"${7://cdn.jsdelivr.net/gh/sucom/SPA.js/dist/spa-bundle.min.js}\"></script>\n\n</body>\n\n</html>",
+      "description": "SPA - HTML boilerplate for SPA.js with Bootstrap"
     },
     "html-spa-component": {
-      "prefix": "!spa-component-template",
+      "prefix": "!template-spa-component",
       "body":"<${1:section} class=\"container-component\" id=\"c_${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+_}${6:+_}$6/g}\">\n\t$0\n</${1:section}>",
       "description": "SPA - HTML boilerplate for SPA.js component"
     },
 
     "cdn-bs-css" : {
-      "prefix": "cdn-bs-css",
-      "body": "<link rel=\"stylesheet\" href=\"//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">\n",
-      "description": "Bootstrap CSS cdn link"
+      "prefix": "cdn:bs-css",
+      "body": "<link rel=\"stylesheet\" href=\"//cdn.jsdelivr.net/npm/bootstrap@${1:4.3.1}/dist/css/bootstrap.min.css\">$0",
+      "description": "Bootstrap CSS cdn link[href]"
     },
     "cdn-bs-js" : {
-      "prefix": "cdn-bs-js",
-      "body": "<script src=\"//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"></script>\n<script src=\"//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"></script>\n",
-      "description": "Bootstrap JS cdn src"
+      "prefix": "cdn:bs-js",
+      "body": "<script src=\"//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js\"></script>\n<script src=\"//cdn.jsdelivr.net/npm/popper.js@latest/dist/umd/popper.min.js\"></script>\n<script src=\"//cdn.jsdelivr.net/npm/bootstrap@${1:4.3.1}/dist/js/bootstrap.min.js\"></script>$0",
+      "description": "Bootstrap JS cdn script[src]"
     },
     "cdn-spa-js" : {
-      "prefix": "cdn-spa-js",
-      "body": "<script src=\"//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js\"></script>\n<script src=\"//cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js\"></script>\n<script src=\"//cdn.jsdelivr.net/gh/sucom/SPA.js@latest/dist/spa-bundle.min.js\"></script>\n",
-      "description": "SPA JS cdn src"
+      "prefix": "cdn:spa-js",
+      "body": "<script src=\"//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js\"></script>\n<script src=\"//cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js\"></script>\n<script src=\"//cdn.jsdelivr.net/gh/sucom/SPA.js/dist/spa-bundle.min.js\"></script>$0",
+      "description": "SPA JS cdn script[src]"
+    },
+    "cdn-jq-js" : {
+      "prefix": "cdn:jquery-js",
+      "body": "<script src=\"//cdn.jsdelivr.net/npm/jquery@${1:latest}/dist/jquery.min.js\"></script>$0",
+      "description": "jQuery cdn script[src]"
+    },
+    "cdn-handlebars-js" : {
+      "prefix": "cdn:handlebars-js",
+      "body": "<script src=\"//cdn.jsdelivr.net/npm/handlebars@${1:latest}/dist/handlebars.min.js\"></script>$0",
+      "description": "Handlebars cdn script[src]"
+    },
+    "cdn-lodash-js" : {
+      "prefix": "cdn:lodash-js",
+      "body": "<script src=\"//cdn.jsdelivr.net/npm/lodash@${1:latest}/lodash.min.js\"></script>$0",
+      "description": "Lodash cdn script[src]"
+    },
+
+    "meta-seo" : {
+      "prefix": "meta:seo",
+      "body": "<meta name=\"robots\" content=\"index,follow\" />\n<meta name=\"keywords\" content=\"${1}\" />\n<meta name=\"description\" content=\"${2}\" />$0",
+      "description": "meta tags for SEO"
+    },
+    "meta-no-cache" : {
+      "prefix": "meta:no-cache",
+      "body": "<meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\" />\n<meta http-equiv=\"Pragma\" content=\"no-cache\" />\n<meta http-equiv=\"Expires\" content=\"0\" />$0",
+      "description": "meta tags for no-cache"
+    },
+    "meta-fav-icon" : {
+      "prefix": "meta:fav-icon",
+      "body": "<link rel=\"icon\" type=\"image/${1:png}\" href=\"${2:favicon.png}\" />$0",
+      "description": "meta tags for fav-icon"
     },
 
     "spa-html-component": {
