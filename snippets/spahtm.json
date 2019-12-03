@@ -63,9 +63,24 @@
       "description": "meta tags for fav-icon"
     },
 
+    "spa-html-template": {
+      "prefix": ["spa-template", "-template"],
+      "body": "<spa-template src=\"${1:componentName}\"></spa-template>$0",
+      "description":"SPA - Load Template Component here"
+    },
+    "x-html-template": {
+      "prefix": ["x-template"],
+      "body": "<x-template src=\"${1:componentName}\"></x-template>$0",
+      "description":"SPA - Load Template Component here"
+    },
     "spa-html-component": {
-      "prefix": ["spa$", "spa-component"],
-      "body": "<spa-component src=\"${1:componentName}\"></spa-component>",
+      "prefix": ["spa$", "spa-component", "-component"],
+      "body": "<spa-component src=\"${1:componentName}\"></spa-component>$0",
+      "description":"SPA - Render Component here using tag"
+    },
+    "x-html-component": {
+      "prefix": ["x-component"],
+      "body": "<x-component src=\"${1:componentName}\"></x-component>$0",
       "description":"SPA - Render Component here using tag"
     },
     "data-spa-component": {
@@ -118,9 +133,21 @@
     },
 
     "spa-defaults-components": {
-      "prefix": "spa-components-defaults",
+      "prefix": ["spa-components-defaults", "-defaults"],
       "body" : "data-spa-defaults-components=\"scriptExt:'.js', templateExt:'.html', rootPath:'app/components/', inFolder:true\"",
       "description": "SPA - component's default attributes in body tag"
+    },
+
+    "a-rel" : {
+      "prefix": ["a-rel", "a:rel"],
+      "body" : "rel=\"noopener noreferrer\"",
+      "description": "a [rel]"
+    },
+
+    "a-target-blank" : {
+      "prefix": ["target:blank", "a:target"],
+      "body" : "target=\"_blank\" rel=\"noopener noreferrer\"",
+      "description": "a [rel]"
     },
 
     "hb-spa$": {
