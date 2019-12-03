@@ -63,28 +63,28 @@
       "description": "meta tags for fav-icon"
     },
 
-    "spa-html-template": {
+    "spa-tag-template": {
       "prefix": ["spa-template", "-template"],
       "body": "<spa-template src=\"${1:componentName}\"></spa-template>$0",
       "description":"SPA - Load Template Component here"
     },
-    "x-html-template": {
+    "x-tag-template": {
       "prefix": ["x-template"],
       "body": "<x-template src=\"${1:componentName}\"></x-template>$0",
       "description":"SPA - Load Template Component here"
     },
-    "spa-html-component": {
+    "spa-tag-component": {
       "prefix": ["spa$", "spa-component", "-component"],
       "body": "<spa-component src=\"${1:componentName}\"></spa-component>$0",
       "description":"SPA - Render Component here using tag"
     },
-    "x-html-component": {
+    "x-tag-component": {
       "prefix": ["x-component"],
       "body": "<x-component src=\"${1:componentName}\"></x-component>$0",
       "description":"SPA - Render Component here using tag"
     },
     "data-spa-component": {
-      "prefix": "data-spa-component",
+      "prefix": ["data-spa-component", ":spa-component"],
       "body": "data-spa-component=\"${1:componentName}\"",
       "description":"SPA - Render Component here using attribute"
     },
