@@ -63,28 +63,38 @@
       "description": "meta tags for fav-icon"
     },
 
-    "spa-tag-template": {
-      "prefix": ["spa-template", "-template"],
+    "tag-spa-html": {
+      "prefix": ["-html", "spa-html"],
+      "body": "<spa-html src=\"${1:html-src-path}\"></spa-html>$0",
+      "description":"SPA - Load remote html here"
+    },
+    "tag-x-html": {
+      "prefix": ["x-html"],
+      "body": "<x-html src=\"${1:html-src-path}\"></x-html>$0",
+      "description":"SPA - Load remote html here"
+    },
+    "tag-spa-template": {
+      "prefix": ["-template", "spa-template"],
       "body": "<spa-template src=\"${1:componentName}\"></spa-template>$0",
       "description":"SPA - Load Template Component here"
     },
-    "x-tag-template": {
+    "tag-x-template": {
       "prefix": ["x-template"],
       "body": "<x-template src=\"${1:componentName}\"></x-template>$0",
       "description":"SPA - Load Template Component here"
     },
-    "spa-tag-component": {
-      "prefix": ["spa$", "spa-component", "-component"],
+    "tag-spa-component": {
+      "prefix": ["-component", "spa-component", "spa$"],
       "body": "<spa-component src=\"${1:componentName}\"></spa-component>$0",
       "description":"SPA - Render Component here using tag"
     },
-    "x-tag-component": {
+    "tag-x-component": {
       "prefix": ["x-component"],
       "body": "<x-component src=\"${1:componentName}\"></x-component>$0",
       "description":"SPA - Render Component here using tag"
     },
-    "data-spa-component": {
-      "prefix": ["data-spa-component", ":spa-component"],
+    "attr-data-spa-component": {
+      "prefix": [":-component", ":spa-component", ":data-spa-component"],
       "body": "data-spa-component=\"${1:componentName}\"",
       "description":"SPA - Render Component here using attribute"
     },
