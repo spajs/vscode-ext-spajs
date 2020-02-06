@@ -3,17 +3,27 @@
     "html-spa": {
       "prefix": "!html-spa",
       "body":"<!DOCTYPE html>\n<html lang=\"en-US\">\n\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\t<title>${1:Single Page App}</title>\n\n</head>\n\n<body>\n\n\t<spa-component src=\"${2:rootComponentName}\"></spa-component>\n$0\n\t<script src=\"${3://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js}\"></script>\n\t<script src=\"${4://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js}\"></script>\n\t<script src=\"${5://cdn.jsdelivr.net/gh/sucom/SPA.js/dist/spa-bundle.min.js}\"></script>\n\n</body>\n\n</html>",
-      "description": "SPA - HTML boilerplate for SPA.js"
+      "description": "SPA - HTML boilerplate"
+    },
+    "html-xsr": {
+      "prefix": "!html-xsr",
+      "body":"<!DOCTYPE html>\n<html lang=\"en-US\">\n\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\t<title>${1:Single Page App}</title>\n\n</head>\n\n<body>\n\n\t<x-component src=\"${2:rootComponentName}\"></x-component>\n$0\n\t<script src=\"${3://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js}\"></script>\n\t<script src=\"${4://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js}\"></script>\n\t<script src=\"${5://cdn.jsdelivr.net/gh/sucom/SPA.js/dist/xsr-bundle.min.js}\"></script>\n\n</body>\n\n</html>",
+      "description": "XSR - HTML boilerplate"
     },
     "html-spa-bs": {
       "prefix": "!html-spa+bootstrap",
       "body":"<!DOCTYPE html>\n<html lang=\"en-US\">\n\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\t<title>${1:Single Page App}</title>\n\n\t<link rel=\"stylesheet\" href=\"${8://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css}\" />\n\n</head>\n\n<body>\n\n\t<spa-component src=\"${2:rootComponentName}\"></spa-component>\n$0\n\t<script src=\"${3://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js}\"></script>\n\t<script src=\"${4://cdn.jsdelivr.net/npm/popper.js@latest/dist/umd/popper.min.js}\"></script>\n\t<script src=\"${5://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js}\"></script>\n\t<script src=\"${6://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js}\"></script>\n\t<script src=\"${7://cdn.jsdelivr.net/gh/sucom/SPA.js/dist/spa-bundle.min.js}\"></script>\n\n</body>\n\n</html>",
-      "description": "SPA - HTML boilerplate for SPA.js with Bootstrap"
+      "description": "SPA - HTML boilerplate with Bootstrap"
     },
-    "html-spa-component": {
-      "prefix": "!template-spa-component",
+    "html-xsr-bs": {
+      "prefix": "!html-xsr+bootstrap",
+      "body":"<!DOCTYPE html>\n<html lang=\"en-US\">\n\n<head>\n\t<meta charset=\"UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n\t<title>${1:Single Page App}</title>\n\n\t<link rel=\"stylesheet\" href=\"${8://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css}\" />\n\n</head>\n\n<body>\n\n\t<x-component src=\"${2:rootComponentName}\"></x-component>\n$0\n\t<script src=\"${3://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js}\"></script>\n\t<script src=\"${4://cdn.jsdelivr.net/npm/popper.js@latest/dist/umd/popper.min.js}\"></script>\n\t<script src=\"${5://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js}\"></script>\n\t<script src=\"${6://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js}\"></script>\n\t<script src=\"${7://cdn.jsdelivr.net/gh/sucom/SPA.js/dist/xsr-bundle.min.js}\"></script>\n\n</body>\n\n</html>",
+      "description": "XSR - HTML boilerplate with Bootstrap"
+    },
+    "html-xsr-spa-component": {
+      "prefix": "!template-component",
       "body":"<${1:section} class=\"container-component\" id=\"c_${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+_}${6:+_}$6/g}\">\n\t$0\n</${1:section}>",
-      "description": "SPA - HTML boilerplate for SPA.js component"
+      "description": "XSR/SPA - HTML boilerplate component"
     },
 
     "cdn-bs-css" : {
@@ -30,6 +40,11 @@
       "prefix": "cdn:spa-js",
       "body": "<script src=\"//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js\"></script>\n<script src=\"//cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js\"></script>\n<script src=\"//cdn.jsdelivr.net/gh/sucom/SPA.js/dist/spa-bundle.min.js\"></script>$0",
       "description": "SPA JS cdn script[src]"
+    },
+    "cdn-xsr-js" : {
+      "prefix": "cdn:xsr-js",
+      "body": "<script src=\"//cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js\"></script>\n<script src=\"//cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.min.js\"></script>\n<script src=\"//cdn.jsdelivr.net/gh/sucom/SPA.js/dist/xsr-bundle.min.js\"></script>$0",
+      "description": "XSR JS cdn script[src]"
     },
     "cdn-jq-js" : {
       "prefix": "cdn:jquery-js",
@@ -69,9 +84,9 @@
       "description":"SPA - Load remote html here"
     },
     "tag-x-html": {
-      "prefix": ["x-html"],
+      "prefix": ["x-html", "xsr-html"],
       "body": "<x-html src=\"${1:html-src-path}\"></x-html>$0",
-      "description":"SPA - Load remote html here"
+      "description":"XSR - Load remote html here"
     },
     "tag-spa-template": {
       "prefix": ["-template", "spa-template"],
@@ -79,24 +94,24 @@
       "description":"SPA - Load Template Component here"
     },
     "tag-x-template": {
-      "prefix": ["x-template"],
+      "prefix": ["x-template", "xsr-template"],
       "body": "<x-template src=\"${1:componentName}\"></x-template>$0",
-      "description":"SPA - Load Template Component here"
+      "description":"XSR - Load Template Component here"
     },
     "tag-spa-component": {
-      "prefix": ["-component", "spa-component", "spa$"],
+      "prefix": ["-spacomponent", "spa-component", "spa$"],
       "body": "<spa-component src=\"${1:componentName}\"></spa-component>$0",
       "description":"SPA - Render Component here using tag"
     },
     "tag-x-component": {
-      "prefix": ["x-component"],
+      "prefix": ["-component", "x-component", "xsr-component", "xsr$"],
       "body": "<x-component src=\"${1:componentName}\"></x-component>$0",
-      "description":"SPA - Render Component here using tag"
+      "description":"XSR - Render Component here using tag"
     },
     "attr-data-spa-component": {
-      "prefix": [":-component", ":spa-component", ":data-spa-component"],
-      "body": "data-spa-component=\"${1:componentName}\"",
-      "description":"SPA - Render Component here using attribute"
+      "prefix": [":component", ":spa-component", ":data-spa-component", ":xsr-component", ":data-xsr-component", ":data-x-component"],
+      "body": "data-x-component=\"${1:componentName}\"",
+      "description":"XSR/SPA - Render Component here using attribute"
     },
 
     "i18n-lang": {
@@ -116,12 +131,12 @@
     },
 
     "data-spa-route": {
-      "prefix": "data-spa-route",
+      "prefix": ["data-spa-route", "data-xsr-route"],
       "body": "data-spa-route=\"${1}\"",
       "description":"SPA - Routing Path"
     },
     "data-spa-route-params": {
-      "prefix": "data-spa-route-params",
+      "prefix": ["data-spa-route-params", "data-xsr-route-params"],
       "body": "data-spa-route-params=\"${1:param1}:'$0'\"",
       "description":"SPA - Routing Parameters"
     },
@@ -143,9 +158,14 @@
     },
 
     "spa-defaults-components": {
-      "prefix": ["spa-components-defaults", "-defaults"],
+      "prefix": ["-defaults", "spa-components-defaults"],
       "body" : "data-spa-defaults-components=\"scriptExt:'.js', templateExt:'.html', rootPath:'app/components/', inFolder:true\"",
       "description": "SPA - component's default attributes in body tag"
+    },
+    "xsr-defaults-components": {
+      "prefix": [":defaults", "xsr-components-defaults"],
+      "body" : "data-xsr-defaults-components=\"scriptExt:'.js', templateExt:'.html', rootPath:'app/components/', inFolder:true\"",
+      "description": "XSR - component's default attributes in body tag"
     },
 
     "a-rel" : {
@@ -163,55 +183,55 @@
     "hb-spa$": {
       "prefix": ":$",
       "body": "{$${1:componentName}}${2:method}();",
-      "description":"SPA - HB-helper {$componentName}method();"
+      "description":"XSR/SPA - HB-helper {$componentName}method();"
     },
 
     "hb-consoleClear": {
       "prefix": ":consoleClear",
       "body": "{{:consoleClear }}",
-      "description":"SPA - HB-helper console.clear"
+      "description":"XSR/SPA - HB-helper console.clear"
     },
     "hb-consoleLog": {
       "prefix": ":consoleLog",
       "body": "{{:consoleLog ${1:variable} }}",
-      "description":"SPA - HB-helper console.log"
+      "description":"XSR/SPA - HB-helper console.log"
     },
 
     "hb-trim": {
       "prefix": ":trim",
       "body": "{{:trim ${1:srcStringVariable} }}",
-      "description":"SPA - HB-helper trimStr"
+      "description":"XSR/SPA - HB-helper trimStr"
     },
     "hb-trimStr": {
       "prefix": ":trimStr",
       "body": "{{:trimStr ${1:srcStringVariable} '${2:trimString}' }}",
-      "description":"SPA - HB-helper trimStr"
+      "description":"XSR/SPA - HB-helper trimStr"
     },
     "hb-trimLeft": {
       "prefix": ":trimLeft",
       "body": "{{:trimLeft ${1:srcStringVariable} }}",
-      "description":"SPA - HB-helper trimLeft"
+      "description":"XSR/SPA - HB-helper trimLeft"
     },
     "hb-trimLeftStr": {
       "prefix": ":trimLeftStr",
       "body": "{{:trimLeftStr ${1:srcStringVariable} '${2:trimString}' }}",
-      "description":"SPA - HB-helper trimLeftStr"
+      "description":"XSR/SPA - HB-helper trimLeftStr"
     },
     "hb-trimRight": {
       "prefix": ":trimRight",
       "body": "{{:trimRight ${1:srcStringVariable} }}",
-      "description":"SPA - HB-helper trimRight"
+      "description":"XSR/SPA - HB-helper trimRight"
     },
     "hb-trimRightStr": {
       "prefix": ":trimRightStr",
       "body": "{{:trimRightStr ${1:srcStringVariable} '${2:trimString}' }}",
-      "description":"SPA - HB-helper trimRightStr"
+      "description":"XSR/SPA - HB-helper trimRightStr"
     },
 
     "hb-replaceString": {
       "prefix": ":replaceString",
       "body": "{{:replace ${1:srcStringVariable} searchStr='${2:searchForString}' replaceStr='${3:replaceWithString}' }}",
-      "description":"SPA - HB-helper replace"
+      "description":"XSR/SPA - HB-helper replace"
     },
     "hb-replaceStringOnRegEx": {
       "prefix": ":replaceStringOnRegEx",
@@ -222,93 +242,93 @@
     "hb-getLeftStrByIndex": {
       "prefix": ":getLeftStrByIndex",
       "body": "{{:getLeftStr ${1:srcStringVariable} ${2:fromIndexNumber} }}",
-      "description":"SPA - HB-helper getLeftStr"
+      "description":"XSR/SPA - HB-helper getLeftStr"
     },
     "hb-getLeftStrByString": {
       "prefix": ":getLeftStrByString",
       "body": "{{:getLeftStr ${1:srcStringVariable} '${2:fromSplitString}' }}",
-      "description":"SPA - HB-helper getLeftStr"
+      "description":"XSR/SPA - HB-helper getLeftStr"
     },
     "hb-getRightStrByIndex": {
       "prefix": ":getRightStrByIndex",
       "body": "{{:getRightStr ${1:srcStringVariable} ${2:fromIndexNumber} }}",
-      "description":"SPA - HB-helper getRightStr"
+      "description":"XSR/SPA - HB-helper getRightStr"
     },
     "hb-getRightStrByString": {
       "prefix": ":getRightStrByString",
       "body": "{{:getRightStr ${1:srcStringVariable} '${2:fromSplitString}' }}",
-      "description":"SPA - HB-helper getRightStr"
+      "description":"XSR/SPA - HB-helper getRightStr"
     },
 
     "hb-normalize": {
       "prefix": ":normalizeStr",
       "body": "{{:normalize ${1:srcStringVariable} }}",
-      "description":"SPA - HB-helper normalize"
+      "description":"XSR/SPA - HB-helper normalize"
     },
     "hb-toLowerCase": {
       "prefix": ":toLowerCase",
       "body": "{{:toLowerCase ${1:srcStringVariable} }}",
-      "description":"SPA - HB-helper toLowerCase"
+      "description":"XSR/SPA - HB-helper toLowerCase"
     },
     "hb-toUpperCase": {
       "prefix": ":toUpperCase",
       "body": "{{:toUpperCase ${1:srcStringVariable} }}",
-      "description":"SPA - HB-helper toUpperCase"
+      "description":"XSR/SPA - HB-helper toUpperCase"
     },
     "hb-toTitleCase": {
       "prefix": ":toTitleCase",
       "body": "{{:toTitleCase ${1:srcStringVariable} }}",
-      "description":"SPA - HB-helper toTitleCase"
+      "description":"XSR/SPA - HB-helper toTitleCase"
     },
     "hb-toString": {
       "prefix": ":toString",
       "body": "{{:toStr ${1:srcObjectVariable} }}",
-      "description":"SPA - HB-helper toStr object"
+      "description":"XSR/SPA - HB-helper toStr object"
     },
     "hb-toBoolean": {
       "prefix": ":toBoolean",
       "body": "{{:toBool ${1:srcStringVariable} }}",
-      "description":"SPA - HB-helper toBoolean X"
+      "description":"XSR/SPA - HB-helper toBoolean X"
     },
     "hb-capitalize": {
       "prefix": ":capitalize",
       "body": "{{:capitalize ${1:srcStringVariable} }}",
-      "description":"SPA - HB-helper capitalize"
+      "description":"XSR/SPA - HB-helper capitalize"
     },
     "hb-unCapitalize": {
       "prefix": ":unCapitalize",
       "body": "{{:unCapitalize ${1:srcStringVariable} }}",
-      "description":"SPA - HB-helper unCapitalize"
+      "description":"XSR/SPA - HB-helper unCapitalize"
     },
     "hb-dateNowMs": {
       "prefix": ":dateNowMs",
       "body": "{{:dateNowMs }}",
-      "description":"SPA - HB-helper current time in milliseconds."
+      "description":"XSR/SPA - HB-helper current time in milliseconds."
     },
     "hb-dateNowFormat": {
       "prefix": ":dateNow",
       "body": "{{:dateNow '${1:formatString}' }}",
-      "description":"SPA - HB-helper current date time in given format."
+      "description":"XSR/SPA - HB-helper current date time in given format."
     },
     "hb-dateNowFormatHelp": {
       "prefix": ":dateNowFormatHelp",
       "body": "\n<!-- :dateNow FormatString Help\n*   'YY'   : Full Year (4 digits)\n*   'YYYY' : Full Year (4 digits)\n*   'Y'    : Full Year (4 digits)\n*\n*   'Mmmm' : January\n*   'MMMM' : JANUARY\n*   'Mmm'  : Jan\n*   'MMM'  : JAN\n*   '0M'   : 01 (01-12 month in 2 digits)\n*   'MM'   : 1  ( 1-12 month in 1 digit till 9)\n*\n*   'Dddd' : Sunday\n*   'DDDD' : SUNDAY\n*   'Ddd'  : Sun\n*   'DDD'  : SUN\n*   'Dd'   : Su\n*   'DD'   : SU\n*   '0d'   : 06 (01-31 date in 2 digits)\n*   'dd'   : 6  ( 1-31 date in 1 digit till 9)\n*\n*\n*   '0h'   : 09 (00-23 hour in 2 digits)\n*   'hh'   : 9  ( 0-23 hour in 1 digit till 9)\n*   '0m'   : 05 (00-59 minute in 2 digits)\n*   'mm'   : 5  ( 0-59 minute in 1 digit till 9)\n*   '0s'   : 01 (00-59 seconds in 2 digits)\n*   'ss'   : 1  ( 0-59 seconds in 1 digit till 9)\n*\n*   'ms'   : 456 (milliseconds 0 - 999)\n-->",
-      "description":"SPA - HB-helper format string for :dateNow."
+      "description":"XSR/SPA - HB-helper format string for :dateNow."
     },
     "hb-moment": {
       "prefix": ":moment",
       "body": "{{:moment ${1:srcDateTimeStringVariable} '${2:srcFormatString}' '${3:targetFormatString}' }}",
-      "description":"SPA - HB-helper date-time format using moment.js\n** Requires moment.js **\n"
+      "description":"XSR/SPA - HB-helper date-time format using moment.js\n** Requires moment.js **\n"
     },
     "hb-rand": {
       "prefix": ":rand",
       "body": "{{:rand ${1:minNumber} ${2:maxNumber} }}",
-      "description":"SPA - HB-helper random number between min and max.\n"
+      "description":"XSR/SPA - HB-helper random number between min and max.\n"
     },
     "hb-randPwd": {
       "prefix": ":randPwd",
       "body": "{{:randPwd ${1:passwordLength} '${2:passwordCharacters}' }}",
-      "description":"SPA - HB-helper random number between min and max.\n"
+      "description":"XSR/SPA - HB-helper random number between min and max.\n"
     }
 
   }

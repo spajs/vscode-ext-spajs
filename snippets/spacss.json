@@ -3,7 +3,7 @@
     "css.fixed-bottom": {
       "prefix": ".fixed-bottom",
       "body": "${1:.fixed-bottom} {\n\theight: ${2:50px};\n\tpadding: ${3:10px};\n\tcolor: ${4:#fff};\n\tbackground-color: ${5:#000};\n\ttext-align: ${6:right};\n\tposition: fixed;\n\tleft:0;\n\tbottom:0;\n\twidth: 100%;\n}",
-      "description": "SPA Style .fixed-bottom"
+      "description": "Style .fixed-bottom"
     }
   }
 }
