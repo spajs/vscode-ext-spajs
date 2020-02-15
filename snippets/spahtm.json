@@ -127,7 +127,7 @@
     "data-i18n-lang": {
       "prefix": "data-i18n-lang",
       "body": "data-i18n-lang=\"${1:en_US}\"",
-      "description":"SPA - i18n for language switch/change"
+      "description":"SPA - i18n language switch/change"
     },
 
     "data-spa-route": {
@@ -178,6 +178,17 @@
       "prefix": ["target:blank", "a:target"],
       "body" : "target=\"_blank\" rel=\"noopener noreferrer\"",
       "description": "a [rel]"
+    },
+
+    "for" : {
+      "prefix": "for",
+      "body" : "for$0",
+      "description": "for"
+    },
+    "for-attr" : {
+      "prefix": ":for",
+      "body" : "for=\"${1:componentName}\"$0",
+      "description": "for SPA/XSR component"
     },
 
     "hb-spa$": {
