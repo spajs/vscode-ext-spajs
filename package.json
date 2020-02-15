@@ -8,7 +8,7 @@
         "SPA.js",
         "Single Page Application"
     ],
-    "version": "1.11.1",
+    "version": "1.11.2",
     "publisher": "spajs",
     "icon": "images/spajsIcon.png",
     "engines": {
