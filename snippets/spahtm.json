@@ -21,8 +21,8 @@
       "description": "XSR - HTML boilerplate with Bootstrap"
     },
     "html-xsr-spa-component": {
-      "prefix": "!template-component",
-      "body":"<${1:section} class=\"container-component\" id=\"c_${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+_}${6:+_}$6/g}\">\n\t$0\n</${1:section}>",
+      "prefix": ["!template-component", "-container"],
+      "body":"<${1:section} class=\"container${2:-}component$3\" id=\"c_${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+_}${6:+_}$6/g}\">\n\t$0\n</${1:section}>",
       "description": "XSR/SPA - HTML boilerplate component"
     },
 
