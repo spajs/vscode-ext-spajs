@@ -286,6 +286,28 @@
       "body": "xsr.i18n.apply( '#${1:OptionalContext}', '${2:optionalElementSelector}' );$0",
       "description":"XSR - apply i18n text on the element(s) in the context/scope."
     },
+
+    "spa-i18n-setLang": {
+      "prefix": "spa.i18n.setLang",
+      "body": "spa.i18n.setLang( '${1|en,en-US,fr,fr-FR,ja,ja-JP|}', {\n\turl: '${2:@langUrl}',\n\turlParams: {$3}\n\t} );$0",
+      "description":"SPA - set/change i18n language."
+    },
+    "xsr-i18n-setLang": {
+      "prefix": "xsr.i18n.setLang",
+      "body": "xsr.i18n.setLang( '${1|en,en-US,fr,fr-FR,ja,ja-JP|}', {\n\turl: '${2:@langUrl}',\n\turlParams: {$3}\n\t} );$0",
+      "description":"XSR - set/change i18n language."
+    },
+    "spa-i18n-updateLang": {
+      "prefix": "spa.i18n.updateLang",
+      "body": "spa.i18n.updateLang( {\n\turl: '${2:@langUrl}',\n\turlParams: {$3}\n\t} );$0",
+      "description":"SPA - update i18n language dictionary."
+    },
+    "xsr-i18n-updateLang": {
+      "prefix": "xsr.i18n.updateLang",
+      "body": "xsr.i18n.updateLang( {\n\turl: '${2:@langUrl}',\n\turlParams: {$3}\n\t} );$0",
+      "description":"XSR - update i18n language dictionary."
+    },
+
     "spa-is": {
       "prefix": "spa.is",
       "body": "spa.is( ${1:variable}, '${2|array,boolean,function,number,null,object,string,undefined|}|${3|array,boolean,function,number,null,object,string,undefined|}' )$0",

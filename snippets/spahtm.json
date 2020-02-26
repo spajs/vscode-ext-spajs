@@ -51,6 +51,11 @@
       "body": "<script src=\"//cdn.jsdelivr.net/npm/jquery@${1:latest}/dist/jquery.min.js\"></script>$0",
       "description": "jQuery cdn script[src]"
     },
+    "cdn-jq-js-slim" : {
+      "prefix": "cdn:jquery-js-slim",
+      "body": "<script src=\"//cdn.jsdelivr.net/npm/jquery@${1:latest}/dist/jquery.slim.min.js\"></script>$0",
+      "description": "jQuery-slim cdn script[src]"
+    },
     "cdn-handlebars-js" : {
       "prefix": "cdn:handlebars-js",
       "body": "<script src=\"//cdn.jsdelivr.net/npm/handlebars@${1:latest}/dist/handlebars.min.js\"></script>$0",
