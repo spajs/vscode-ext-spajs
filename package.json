@@ -1,14 +1,14 @@
 {
     "name": "spajs",
-    "displayName": "spajs",
-    "description": "Code Snippets for SPAjs framework https://spa.js.org",
+    "displayName": "SPAjs",
+    "description": "Code Snippets for SPA.js framework https://spa.js.org",
     "keywords": [
         "SPAjs",
         "SPA js",
         "SPA.js",
         "Single Page Application"
     ],
-    "version": "1.11.4",
+    "version": "1.12.0",
     "publisher": "spajs",
     "icon": "images/spajsIcon.png",
     "engines": {
