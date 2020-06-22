@@ -1,14 +1,14 @@
 {
   ".js": {
     "spa-component-path": {
-      "prefix": ["spa$path", "spa$/", "xsr$path", "xsr$/", "x$path", "x$/"],
+      "prefix": ["spa$path", "spa$/", "x$path", "x$/"],
       "body":"${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+/}${6:+/}$6/g}$0",
-      "description":"XSR/SPA Component Path (componentX/componentY/ComponentZ)"
+      "description":"SPA/XSR Component Path (componentX/componentY/ComponentZ)"
     },
     "spa-component-key": {
-      "prefix": ["spa$key", "spa$#", "spa$_", "spa$name", "xsr$key", "xsr$#", "xsr$_", "xsr$name", "x$key", "x$#", "x$_", "x$name"],
+      "prefix": ["spa$#", "spa$name", "x$#", "x$name"],
       "body":"${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+_}${6:+_}$6/g}$0",
-      "description":"XSR/SPA Component Key (componentX_componentY_ComponentZ)"
+      "description":"SPA/XSR Component Key (componentX_componentY_ComponentZ)"
     },
 
     "spa-component": {
@@ -17,13 +17,328 @@
       "description":"Define SPA Component"
     },
     "xsr-component": {
-      "prefix": ["x$", "x.$", "xsr$", "xsr.$"],
+      "prefix": ["x$", "x.$"],
       "body": "xsr.\\$('${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+/}${6:+/}$6/g}', {\n\t${1|require,style,target,templateUrl,dataUrl|}: '${2}'$0\n});",
       "description":"Define SPA Component"
     },
 
+    "new-spa-component": {
+      "prefix": ["newSpa$", "newSpaComponent", "nsc", "spa$new"],
+      "body": [
+        "// @spa\\$:${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+/}${6:+/}$6/g}",
+        "",
+        "// componentName: ${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+_}${6:+_}$6/g}",
+        "",
+        "// available spa.$fn aliases: spa.$render as render; spa.$refresh as refresh; spa.merge as merge; spa.extend as extend;",
+        "",
+        "/* private properties */",
+        "",
+        "var _target = '#${1:targetContainer}';",
+        "",
+        "var _dataUrl = '${4:@apiKey/URL}';",
+        "",
+        "// type \\$_ to see other private properties",
+        "$0",
+        "",
+        "function _renderCallback () { // DO NOT USE ARROW FUNCTION",
+        "  var templateData = this.\\$data; // or app.componentX.\\$data",
+        "",
+        "  console.log('Component componentX has been rendered with Data:', templateData);",
+        "",
+        "  ${2:doSomething}();",
+        "};",
+        "",
+        "/* local variables and functions */",
+        "",
+        "function ${2:doSomething} () {",
+        "  console.log('Doing Something...');",
+        "}",
+        "",
+        "/* export local variables or functions as properties accessible through component:componentX as app.componentX.actionX(); */",
+        "var prop = {",
+        "",
+        "  ${3:actionX}: ${2:doSomething}",
+        "",
+        "};"
+        ],
+      "description":"Define new SPA Component"
+    },
+
+    "spa-comp-private-prop-target": {
+      "prefix": "spa$_target",
+      "body": "var _target = '#${1:targetContainer}';$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-require": {
+      "prefix": "spa$_require",
+      "body": "var _require = '${1:component_names-with-comma-delimiter}';$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-style": {
+      "prefix": "spa$_style",
+      "body": "var _style = '.';$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-styleCache": {
+      "prefix": "spa$_styleCache",
+      "body": "var _styleCache = ${1|true,false|};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-scripts": {
+      "prefix": "spa$_scripts",
+      "body": "var _scripts = '${1:scriptPath-with-comma-delimiter}';$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-scriptsCache": {
+      "prefix": "spa$_scriptsCache",
+      "body": "var _scriptsCache = ${1|true,false|};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-template": {
+      "prefix": "spa$_template",
+      "body": "var _template = '${1:templateString}';$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-templateCache": {
+      "prefix": "spa$_templateCache",
+      "body": "var _templateCache = ${1|true,false|};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-templateScript": {
+      "prefix": "spa$_templateScript",
+      "body": "var _templateScript = ${1|true,false|};// to enable/disable scripts in template.$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-templateUrl": {
+      "prefix": "spa$_templateUrl",
+      "body": "var _templateUrl = '${1:URL}';$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-templateUrlMethod": {
+      "prefix": "spa$_templateUrlMethod",
+      "body": "var _templateUrlMethod = '${1|GET,POST|}';$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-templateUrlParams": {
+      "prefix": "spa$_templateUrlParams",
+      "body": "var _templateUrlParams = {${1:key}: '${2:value}'$3};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-templateUrlPayload": {
+      "prefix": "spa$_templateUrlPayload",
+      "body": "var _templateUrlPayload = {${1:key}: '${2:value}'$3};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-templateUrlHeaders": {
+      "prefix": "spa$_templateUrlHeaders",
+      "body": "var _templateUrlHeaders = {${1:key}: '${2:value}'$3};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-data": {
+      "prefix": "spa$_data",
+      "body": "var _data = {${1:key}: '${2:value}'$3};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataUrl": {
+      "prefix": "spa$_dataUrl",
+      "body": "var _dataUrl = '${1:@apiKey/URL}';$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataUrlCache": {
+      "prefix": "spa$_dataUrlCache",
+      "body": "var _dataUrlCache = ${1|true,false|};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataUrlMethod": {
+      "prefix": "spa$_dataUrlMethod",
+      "body": "var _dataUrlMethod = '${1|GET,POST|}';$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataUrlParams": {
+      "prefix": "spa$_dataUrlParams",
+      "body": "var _dataUrlParams = ${1:};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataUrlHeaders": {
+      "prefix": "spa$_dataUrlHeaders",
+      "body": "var _dataUrlHeaders = ${1:};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataParams": {
+      "prefix": "spa$_dataParams",
+      "body": "var _dataParams = {${1:key}: '${2:value}'$3};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataModel": {
+      "prefix": "spa$_dataModel",
+      "body": "var _dataModel = '${1|.,target.key|}';$0// use . for entire response object as template data",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataCache": {
+      "prefix": "spa$_dataCache",
+      "body": "var _dataCache = ${1|true,false|};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataDefaults": {
+      "prefix": "spa$_dataDefaults",
+      "body": "var _dataDefaults = {${1:key}: '${2:value}'$3};$0",
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-events": {
+      "prefix": "spa$_events",
+      "body": "var _events = [\n\t{ target: '${1:#target element .selector}',\n\t\ton${2|Click,Dblclick,Mouseenter,Mouseleave,Keydown,Keyup,Keypress,Focus,Blur,Change,Submit|}: function ( event ) { // DO NOT use arrow function\n\t\t\t$3\n\t\t}\n\t}${4}\n];$0",
+      "description":"SPA Component private property"
+    },
+
+    "spa-comp-private-prop-dataPreRequest": {
+      "prefix": "spa$_dataPreRequest",
+      "body": [
+        "function _dataPreRequest () {",
+        "  // doSomething before API call, like showing progress message/indicator/animation etc.",
+        "  // optionally override base dataXXXX properties before the API call by return object of this function.",
+        "  // return { dataUrl: 'newUrl' }\n",
+        "  $0",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataPreProcessAsync": {
+      "prefix": "spa$_dataPreProcessAsync",
+      "body": ["function _dataPreProcessAsync ( initialData ) {",
+        "  // initialData == the _data or response of _dataUrl of this component\n",
+        "  var apiPayLoad = {};\n",
+        "  var api1 = spa.api.${1|get,post|}('${2:@api1Key}', apiPayLoad),$0",
+        "      api2 = spa.api.get('@api2Key'),",
+        "      api3 = spa.api.get('@api3Key');\n",
+        "  return [api1, api2, api3];",
+        "}\n",
+        "function _dataProcess ( initialData, api1ResData, api2ResData, api3ResData ) {\n",
+        "  var finalTemplateData = {};\n",
+        "  //construct finalTemplateData from initialData, api1ResData, api2ResData, api3ResData\n",
+        "  return finalTemplateData; //send to template for rendering",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataProcess": {
+      "prefix": "spa$_dataProcess",
+      "body": [
+        "function _dataProcess ( initialData ) {\n",
+        "  var finalTemplateData = initialData;\n",
+        "  // update finalTemplateData for template$0\n",
+        "  return finalTemplateData; // send to template for rendering",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-onRender": {
+      "prefix": "spa$_onRender",
+      "body": [
+        "function _onRender ( arg ) {",
+        "  // doSomething just before render this component",
+        "  // arg.data contains the finalTemplateData",
+        "  // optionally, return false; to stop the render",
+        "  $0",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-onRefresh": {
+      "prefix": "spa$_onRefresh",
+      "body": [
+        "function _onRefresh ( arg ) {",
+        "  // doSomething just before refresh this component",
+        "  // arg.data contains the finalTemplateData",
+        "  // optionally, return false; to stop the refresh",
+        "  $0",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-onRemove": {
+      "prefix": "spa$_onRemove",
+      "body": [
+        "function _onRemove ( byCompName ) {",
+        "  // doSomething just before remove this component from DOM",
+        "  // byCompName = name of the component, which attempts to remove this component",
+        "  // optionally, return false; to stop this action",
+        "  $0",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+
+    "spa-comp-private-prop-renderCallback": {
+      "prefix": "spa$_renderCallback",
+      "body": [
+        "function _renderCallback ( arg ) {",
+        "  // doSomething just after this component is added to the DOM by spa.\\$render(...) call",
+        "  // arg.model holds the final template data",
+        "  // arg.iOptions holds the options, which are used to render this component\n",
+        "  $0",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-refreshCallback": {
+      "prefix": "spa$_refreshCallback",
+      "body": [
+        "function _refreshCallback ( arg ) {",
+        "  // doSomething just after this component is added to the DOM by spa.\\$refresh(...) call",
+        "  // arg.model holds the final template data",
+        "  // arg.iOptions holds the options, which are used to render this component\n",
+        "  $0",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-dataValidate": {
+      "prefix": "spa$_dataValidate",
+      "body": [
+        "function _dataValidate ( apiRes, XHR ) {",
+        "  // validate apiRes here; return true ==> continues rendering / false ==> stops rendering",
+        "  // NOTE: if (true) _dataModel key will be used to extract data from apiRes for the template (i.e. templateData = apiRes[ _dataModel ])",
+        "  // if _dataModel is not defined, entire apiRes will be used for the template",
+        "  $0",
+        "  return true;",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+
+    "spa-comp-private-prop-onTemplateUrlError": {
+      "prefix": "spa$_onTemplateUrlError",
+      "body": [
+        "function _onTemplateUrlError ( XHR, errorType, statusText ) {",
+        "  // error handler for _templateUrl error",
+        "  $0",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-onDataUrlError": {
+      "prefix": "spa$_onDataUrlError",
+      "body": [
+        "function _onDataUrlError (XHR, statusText) {",
+        "  // error handler for _dataUrl error",
+        "  $0",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+    "spa-comp-private-prop-onError": {
+      "prefix": "spa$_onError",
+      "body": [
+        "function _onError (XHR, statusText) {",
+        "  // error handler for _dataUrl error",
+        "  $0",
+        "}"
+      ],
+      "description":"SPA Component private property"
+    },
+
     "spa-component-file": {
-      "prefix": ["spa$filename", "xsr$filename", "x$filename"],
+      "prefix": ["spa$filename", "x$filename"],
       "body":"${TM_FILENAME_BASE}$0",
       "description":"This File name"
     },
@@ -66,6 +381,46 @@
       "body": "xsr.\\$refresh('${1:componentName}', {$0});",
       "description":"Refresh XSR Component"
     },
+    "spa-component-show": {
+      "prefix": ["spa$show", "spa.$show"],
+      "body": "spa.\\$show('${1:componentName}', {$0});",
+      "description":"Show SPA Component"
+    },
+    "xsr-component-show": {
+      "prefix": ["xsr$show", "xsr.$show", "x$show"],
+      "body": "xsr.\\$show('${1:componentName}', {$0});",
+      "description":"Show XSR Component"
+    },
+    "spa-component-hide": {
+      "prefix": ["spa$hide", "spa.$hide"],
+      "body": "spa.\\$hide('${1:componentName}', {$0});",
+      "description":"Hide SPA Component"
+    },
+    "xsr-component-hide": {
+      "prefix": ["xsr$hide", "xsr.$hide", "x$hide"],
+      "body": "xsr.\\$hide('${1:componentName}', {$0});",
+      "description":"Hide XSR Component"
+    },
+    "spa-component-enable": {
+      "prefix": ["spa$enable", "spa.$enable"],
+      "body": "spa.\\$enable('${1:componentName}', {$0});",
+      "description":"Enable SPA Component"
+    },
+    "xsr-component-enable": {
+      "prefix": ["xsr$enable", "xsr.$enable", "x$enable"],
+      "body": "xsr.\\$enable('${1:componentName}', {$0});",
+      "description":"Enable XSR Component"
+    },
+    "spa-component-disable": {
+      "prefix": ["spa$disable", "spa.$disable"],
+      "body": "spa.\\$disable('${1:componentName}', {$0});",
+      "description":"Disable SPA Component"
+    },
+    "xsr-component-disable": {
+      "prefix": ["xsr$disable", "xsr.$disable", "x$disable"],
+      "body": "xsr.\\$disable('${1:componentName}', {$0});",
+      "description":"Disable XSR Component"
+    },
     "spa-component-remove": {
       "prefix": ["spa$remove", "spa.$remove"],
       "body": "spa.\\$remove('${1:componentName}');$0",
@@ -86,16 +441,18 @@
       "body": "xsr.\\$destroy('${1:componentName}');$0",
       "description":"Remove XSR Component from DOM and destroy its properties"
     },
+
     "spa-component-reference": {
-      "prefix": ["spa$..", "$..", "xsr$..", "x$..", "$.."],
+      "prefix": ["app$"],
       "body": "app.${1:${TM_DIRECTORY/.*components(\\/|\\\\)(([^\\/\\\\]*)(\\/|\\\\)?)|(\\/|\\\\)([^\\/\\\\]*)/$3${4:+_}${6:+_}$6/g}}.${2:property}$0",
       "description":"XSR/SPA Component Reference"
     },
     "app-component-reference": {
-      "prefix": ["app$..", "app.$"],
+      "prefix": ["app$$"],
       "body": "app.${1:componentX}.${2:property}$0",
       "description":"SPA Component Reference"
     },
+
     "spa-bindData": {
       "prefix": "spa.bindData",
       "body": "spa.bindData( '${1:#contextRoot}', ${2:dataObject}, '${3:.elementFilter}' );$0",
@@ -105,26 +462,6 @@
       "prefix": ["xsr.bindData"],
       "body": "xsr.bindData( '${1:#contextRoot}', ${2:dataObject}, '${3:.elementFilter}' );$0",
       "description":"XSR - Data Bind instead of re-render. same as xsr.dataBind"
-    },
-    "spa-bindTemplateData": {
-      "prefix": "spa.bindTemplateData",
-      "body": "spa.bindTemplateData( '${1:#contextRoot}', ${2:dataObject} );$0",
-      "description":"SPA - bind Data with template"
-    },
-    "xsr-bindTemplateData": {
-      "prefix": "xsr.bindTemplateData",
-      "body": "xsr.bindTemplateData( '${1:#contextRoot}', ${2:dataObject} );$0",
-      "description":"XSR - bind Data with template"
-    },
-    "spa-defaults": {
-      "prefix": "spa.defaults",
-      "body": "spa.defaults.set( {\n\tcomponents: {\n\t\trootPath: '${1:app/components/}',\n\t\tinFolder: ${2:true},\n\t\ttemplateExt: '.${3:html}',\n\t\tscriptExt: '.${4:js}',\n\t\tcallback: '${5}'}\n\t} );",
-      "description":"SPA Default Settings"
-    },
-    "xsr-defaults": {
-      "prefix": "xsr.defaults",
-      "body": "xsr.defaults.set( {\n\tcomponents: {\n\t\trootPath: '${1:app/components/}',\n\t\tinFolder: ${2:true},\n\t\ttemplateExt: '.${3:html}',\n\t\tscriptExt: '.${4:js}',\n\t\tcallback: '${5}'}\n\t} );",
-      "description":"XSR Default Settings"
     },
     "spa-dataBind": {
       "prefix": "spa.dataBind",
@@ -136,13 +473,35 @@
       "body": "xsr.dataBind( '${1:#contextRoot}', ${2:dataObject}, '${3:.elementFilter}' );$0",
       "description":"XSR - Data Bind instead of re-render. same as xsr.bindData"
     },
+    "spa-bindTemplateData": {
+      "prefix": "spa.bindTemplateData",
+      "body": "spa.bindTemplateData( '${1:#contextRoot}', ${2:dataObject} );$0",
+      "description":"SPA - bind Data with template"
+    },
+    "xsr-bindTemplateData": {
+      "prefix": "xsr.bindTemplateData",
+      "body": "xsr.bindTemplateData( '${1:#contextRoot}', ${2:dataObject} );$0",
+      "description":"XSR - bind Data with template"
+    },
+
+    "spa-defaults": {
+      "prefix": "spa.defaults",
+      "body": "spa.defaults.set( {\n\tcomponents: {\n\t\trootPath: '${1:app/components/}',\n\t\tinFolder: ${2:true},\n\t\ttemplateExt: '.${3:html}',\n\t\tscriptExt: '.${4:js}',\n\t\tcallback: '${5}'}\n\t} );",
+      "description":"SPA Default Settings"
+    },
+    "xsr-defaults": {
+      "prefix": "xsr.defaults",
+      "body": "xsr.defaults.set( {\n\tcomponents: {\n\t\trootPath: '${1:app/components/}',\n\t\tinFolder: ${2:true},\n\t\ttemplateExt: '.${3:html}',\n\t\tscriptExt: '.${4:js}',\n\t\tcallback: '${5}'}\n\t} );",
+      "description":"XSR Default Settings"
+    },
+
     "spa-doDataValidation": {
-      "prefix": "spa.doDataValidation",
+      "prefix": "spa.doDataValidation-silent",
       "body": "spa.doDataValidation( '#${1:formID}' )$0",
       "description":"SPA - dataValidation - Silent"
     },
     "xsr-doDataValidation": {
-      "prefix": "xsr.doDataValidation",
+      "prefix": "xsr.doDataValidation-silent",
       "body": "xsr.doDataValidation( '#${1:formID}' )$0",
       "description":"XSR - dataValidation - Silent"
     },
@@ -156,6 +515,27 @@
       "body": "xsr.doDataValidation( '#${1:formID}', true )$0",
       "description":"XSR - dataValidation - Show Error Msg"
     },
+    "spa-validateForm": {
+      "prefix": "spa.validateForm-silent",
+      "body": "spa.validateForm( '#${1:formID}' )$0",
+      "description":"SPA - validateForm - Silent"
+    },
+    "xsr-validateForm": {
+      "prefix": "xsr.validateForm-silent",
+      "body": "xsr.validateForm( '#${1:formID}' )$0",
+      "description":"XSR - validateForm - Silent"
+    },
+    "spa-validateForm-showErrorMsg": {
+      "prefix": "spa.validateForm",
+      "body": "spa.validateForm( '#${1:formID}', true )$0",
+      "description":"SPA - validateForm - Show Error Msg"
+    },
+    "xsr-validateForm-showErrorMsg": {
+      "prefix": "xsr.validateForm",
+      "body": "xsr.validateForm( '#${1:formID}', true )$0",
+      "description":"XSR - validateForm - Show Error Msg"
+    },
+
     "spa-findSafe": {
       "prefix": "spa.findInObj",
       "body": "spa.findSafe( ${1:objectName}, '${2:key.path}' );$0",
@@ -177,12 +557,12 @@
       "description":"XSR - get DOM Element value"
     },
     "spa-getElValue-EscHtml": {
-      "prefix": "spa.getElValue",
+      "prefix": "spa.getElValue-EscHTML",
       "body": "spa.getElValue( '#${1:elementID}', true )$0",
       "description":"SPA - get DOM Element value and Escape HTML.\nReturns: string"
     },
     "xsr-getElValue-EscHtml": {
-      "prefix": "xsr.getElValue",
+      "prefix": "xsr.getElValue-EscHTML",
       "body": "xsr.getElValue( '#${1:elementID}', true )$0",
       "description":"XSR - get DOM Element value and Escape HTML.\nReturns: string"
     },
@@ -368,26 +748,6 @@
       "body": "xsr.onUrlHashChange = function( urlHash ){\n\t\t${1}\n\t};$0",
       "description":"XSR - event onUrlHashChange."
     },
-    "spa-pickOnSplit": {
-      "prefix": "spa.pickOnSplit",
-      "body": "spa.pickOnSplit( '${1:string}', '${2:splitBy}', ${3:pickIndex} );$0",
-      "description":"SPA - Pick on Split"
-    },
-    "xsr-pickOnSplit": {
-      "prefix": "xsr.pickOnSplit",
-      "body": "xsr.pickOnSplit( '${1:string}', '${2:splitBy}', ${3:pickIndex} );$0",
-      "description":"XSR - Pick on Split"
-    },
-    "spa-pickOnLastSplit": {
-      "prefix": "spa.pickOnLastSplit",
-      "body": "spa.pickOnSplit( ${1:pickIndex} );$0",
-      "description":"SPA - Pick on previous split"
-    },
-    "xsr-pickOnLastSplit": {
-      "prefix": "xsr.pickOnLastSplit",
-      "body": "xsr.pickOnSplit( ${1:pickIndex} );$0",
-      "description":"XSR - Pick on previous split"
-    },
     "spa-queryStringToObject": {
       "prefix": "spa.queryStringToObject",
       "body": "spa.queryStringToObject( '${1:optionalQryString}' );$0",
@@ -429,22 +789,22 @@
       "description":"XSR - range from min to max by step 1."
     },
     "spa-range-byStep": {
-      "prefix": "spa.range",
+      "prefix": "spa.range-byStep",
       "body": "spa.range( '${1:min}..${2:max}:${3:stepBy}' );$0",
       "description":"SPA - range from min to max by stepBy."
     },
     "xsr-range-byStep": {
-      "prefix": "xsr.range",
+      "prefix": "xsr.range-byStep",
       "body": "xsr.range( '${1:min}..${2:max}:${3:stepBy}' );$0",
       "description":"XSR - range from min to max by stepBy."
     },
     "spa-range-year": {
-      "prefix": "spa.range",
+      "prefix": "spa.range-year",
       "body": "spa.range( 'Y-${1:Number}..Y+${2:Number}' );$0",
       "description":"SPA - year range from currentYear-N to currentYear+N."
     },
     "xsr-range-year": {
-      "prefix": "xsr.range",
+      "prefix": "xsr.range-year",
       "body": "xsr.range( 'Y-${1:Number}..Y+${2:Number}' );$0",
       "description":"XSR - year range from currentYear-N to currentYear+N."
     },
@@ -509,32 +869,32 @@
       "description":"XSR - urlHash:\nReturns: '/hash0/hash1/hash2'"
     },
     "spa-urlHashByIndex": {
-      "prefix": "spa.urlHash",
+      "prefix": "spa.urlHash-byIndex",
       "body": "spa.urlHash( ${1:hashIndexNumber} );$0",
       "description":"SPA - urlHash:\nReturns: string"
     },
     "xsr-urlHashByIndex": {
-      "prefix": "xsr.urlHash",
+      "prefix": "xsr.urlHash-byIndex",
       "body": "xsr.urlHash( ${1:hashIndexNumber} );$0",
       "description":"XSR - urlHash:\nReturns: string"
     },
     "spa-urlHashAsArray": {
-      "prefix": "spa.urlHash",
+      "prefix": "spa.urlHash-asArray",
       "body": "spa.urlHash( [] );$0",
       "description":"SPA - urlHash:\nReturns: array"
     },
     "xsr-urlHashAsArray": {
-      "prefix": "xsr.urlHash",
+      "prefix": "xsr.urlHash-asArray",
       "body": "xsr.urlHash( [] );$0",
       "description":"XSR - urlHash:\nReturns: array"
     },
     "spa-urlHashAsObject": {
-      "prefix": "spa.urlHash",
+      "prefix": "spa.urlHash-asObj",
       "body": "spa.urlHash( ['${1:key0}', '${1:key1}'] );$0",
       "description":"SPA - urlHash:\nReturns: object"
     },
     "xsr-urlHashAsObject": {
-      "prefix": "xsr.urlHash",
+      "prefix": "xsr.urlHash-asObj",
       "body": "xsr.urlHash( ['${1:key0}', '${1:key1}'] );$0",
       "description":"XSR - urlHash:\nReturns: object"
     },
@@ -729,6 +1089,35 @@
       "prefix": ".__valueOf",
       "body": "${1:srcObject}.__valueOf( '${2:key.path}' )$0",
       "description":"Object.__valueOf"
+    },
+
+    "anonymous-function" : {
+      "prefix": "f",
+      "body": ["function ($1) {", "\t$0", "}"],
+      "description": "Anonymous Function"
+    },
+    "named-function" : {
+      "prefix": "fn",
+      "body": ["function ${1:name} ( $2 ) {", "\t$0", "}"],
+      "description": "Named Function"
+    },
+    "arrow-function" : {
+      "prefix": "=>",
+      "body": ["($1) => {", "\t$0", "}"],
+      "description": "Anonymous Function"
+    },
+
+    "console-log": {
+      "prefix": ["clg", "clog"],
+      "body": "console.log($0);"
+    },
+    "console-time": {
+      "prefix": "ctx",
+      "body": "console.time('${1:label}');\n$0console.timeEnd('${1:label}');"
+    },
+    "console-group": {
+      "prefix": "cgx",
+      "body": "console.group('${1:label}');\n$0console.groupEnd('${1:label}');"
     }
   }
 }
